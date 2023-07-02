@@ -12,8 +12,14 @@ const CanvasContainer = styled.div`
   background-color: black;
 `;
 
+interface Cell {
+  x: number;
+  y: number;
+}
+
 interface GoLFieldProperties {
   cellSize: number;
+  livingCells: Cell[];
 }
 
 const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
@@ -56,7 +62,11 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
       for (let i = 0; i < columns; i++) {
         for (let ii = 0; ii < rows; ii++) {
           context.beginPath();
-          context.fillStyle = 'gray';
+          context.fillStyle = props.livingCells.some(
+            (cell) => cell.x === i && cell.y === ii
+          )
+            ? 'yellow'
+            : 'gray';
           context.fillRect(
             i * pixelFactorX + 1,
             ii * pixelFactorY + 1,
@@ -66,7 +76,7 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
         }
       }
     }
-  }, [context, canvasWidth, canvasHeight, props.cellSize]);
+  }, [context, canvasWidth, canvasHeight, props.cellSize, props.livingCells]);
 
   return (
     <CanvasContainer>
