@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
+import { calculateGrid, Cell } from './GameOfLifeService';
 
 const cellSize = 50;
 
@@ -12,14 +13,9 @@ const CanvasContainer = styled.div`
   background-color: black;
 `;
 
-interface Cell {
-  x: number;
-  y: number;
-}
-
 interface GoLFieldProperties {
   cellSize: number;
-  livingCells: Cell[];
+  livingCells?: Cell[];
 }
 
 const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
@@ -28,8 +24,6 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>();
   const [canvasWidth, setCanvasWidth] = useState<number>(window.innerWidth);
   const [canvasHeight, setCanvasHeight] = useState<number>(window.innerHeight);
-  const [rows, setRows] = useState<number>(1);
-  const [columns, setColumns] = useState<number>(4);
 
   const setCanvasSize = () => {
     setCanvasWidth(
@@ -46,12 +40,6 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
     window.addEventListener('resize', setCanvasSize);
   });
 
-  // re-calculate the number of available rows and columns when canvas size changes
-  useEffect(() => {
-    setRows(Math.floor(canvasHeight / props.cellSize));
-    setColumns(Math.floor(canvasWidth / props.cellSize));
-  }, [canvasHeight, canvasWidth, props.cellSize]);
-
   useEffect(() => {
     canvasRef && setCanvas(canvasRef.current);
   }, [canvasRef]);
@@ -63,29 +51,30 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
   }, [canvas]);
 
   useEffect(() => {
-    if (context) {
-      for (let i = 0; i < columns; i++) {
-        for (let ii = 0; ii < rows; ii++) {
-          context.beginPath();
-          context.fillStyle = props.livingCells.some(
-            (cell) => cell.x === i && cell.y === ii
-          )
-            ? 'yellow'
-            : 'gray';
-          context.fillRect(
-            i * props.cellSize + 1,
-            ii * props.cellSize + 1,
-            props.cellSize - 1,
-            props.cellSize - 1
-          );
-        }
-      }
+    if (context && props.livingCells) {
+      const field = calculateGrid(
+        props.cellSize,
+        canvasWidth,
+        canvasHeight,
+        props.livingCells
+      );
+
+      field.forEach((cell) => {
+        context.beginPath();
+        context.fillStyle = cell.alive ? 'yellow' : 'gray';
+        context.fillRect(cell.x, cell.y, cell.h ?? 0, cell.w ?? 0);
+      });
     }
-  }, [context, props.cellSize, props.livingCells, columns, rows]);
+  }, [context, props.cellSize, props.livingCells, canvasWidth, canvasHeight]);
 
   return (
     <CanvasContainer>
-      <Canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
+      <Canvas
+        data-testid='gol-canvas'
+        ref={canvasRef}
+        height={canvasHeight}
+        width={canvasWidth}
+      />
     </CanvasContainer>
   );
 };
