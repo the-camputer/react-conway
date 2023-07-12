@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
-import { calculateGrid, Cell } from './GameOfLifeService';
+import { calculateGrid, Cell, calculateNextState } from './GameOfLifeService';
 
 const cellSize = 50;
 
@@ -64,6 +64,8 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
         context.fillStyle = cell.alive ? 'yellow' : 'gray';
         context.fillRect(cell.x, cell.y, cell.h ?? 0, cell.w ?? 0);
       });
+
+      calculateNextState(props.livingCells);
     }
   }, [context, props.cellSize, props.livingCells, canvasWidth, canvasHeight]);
 

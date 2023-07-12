@@ -5,6 +5,7 @@ import { calculateGrid } from './GameOfLifeService';
 
 jest.mock('./GameOfLifeService', () => ({
   calculateGrid: jest.fn(),
+  calculateNextState: jest.fn(),
 }));
 
 describe('GolField', () => {
