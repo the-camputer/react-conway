@@ -11,11 +11,11 @@ const GameContainer = styled.div`
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
   const [gameState, setGameState] = useState<Cell[]>([
-    { x: 10 + 5, y: 5 - 3 },
-    { x: 11 + 5, y: 6 - 3 },
-    { x: 9 + 5, y: 7 - 3 },
-    { x: 10 + 5, y: 7 - 3 },
-    { x: 11 + 5, y: 7 - 3 },
+    { x: 15, y: 2 },
+    { x: 16, y: 3 },
+    { x: 14, y: 4 },
+    { x: 15, y: 4 },
+    { x: 16, y: 4 },
   ]);
 
   useEffect(() => {
