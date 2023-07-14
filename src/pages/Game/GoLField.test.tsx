@@ -24,6 +24,6 @@ describe('GolField', () => {
     render(<GoLField cellSize={50} livingCells={[]} />);
     const canvas = screen.getByTestId('gol-canvas');
     expect(canvas).toHaveAttribute('width', '750');
-    expect(canvas).toHaveAttribute('height', '250');
+    expect(canvas).toHaveAttribute('height', '400');
   });
 });

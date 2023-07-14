@@ -6,55 +6,67 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="sc-dlnjcy khFybW"
+        class="MuiStack-root css-dxtbbu-JoyStack-root"
       >
-        <header>
-          <div>
-            Conway's Game of Life
-          </div>
-        </header>
+        <h1
+          class="MuiTypography-root MuiTypography-display1 MuiTypography-colorNeutral MuiTypography-variantSolid css-16qvs2p-JoyTypography-root"
+          id="title"
+        >
+          Conway's Game of Life
+        </h1>
         <div
           class="sc-gtsseb fLJXhv"
         >
           <canvas
             class="sc-bdnyYQ ebLwqT"
             data-testid="gol-canvas"
-            height="700"
-            width="1850"
+            height="440"
+            width="1880"
           />
         </div>
-        <footer>
-          <div>
+        <div
+          class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-uxvrk8-JoySheet-root"
+          id="control-center"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorNeutral MuiTypography-variantSolid css-1ane2jc-JoyTypography-root"
+          >
             Place controls here
-          </div>
-        </footer>
+          </p>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="sc-dlnjcy khFybW"
+      class="MuiStack-root css-dxtbbu-JoyStack-root"
     >
-      <header>
-        <div>
-          Conway's Game of Life
-        </div>
-      </header>
+      <h1
+        class="MuiTypography-root MuiTypography-display1 MuiTypography-colorNeutral MuiTypography-variantSolid css-16qvs2p-JoyTypography-root"
+        id="title"
+      >
+        Conway's Game of Life
+      </h1>
       <div
         class="sc-gtsseb fLJXhv"
       >
         <canvas
           class="sc-bdnyYQ ebLwqT"
           data-testid="gol-canvas"
-          height="700"
-          width="1850"
+          height="440"
+          width="1880"
         />
       </div>
-      <footer>
-        <div>
+      <div
+        class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-uxvrk8-JoySheet-root"
+        id="control-center"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 MuiTypography-colorNeutral MuiTypography-variantSolid css-1ane2jc-JoyTypography-root"
+        >
           Place controls here
-        </div>
-      </footer>
+        </p>
+      </div>
     </div>
   </div>,
   "debug": [Function],
