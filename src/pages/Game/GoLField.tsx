@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import { calculateGrid, Cell, calculateNextState } from './GameOfLifeService';
 
-const cellSize = 50;
-
 const Canvas = styled.canvas`
   background-color: #fff;
 `;
@@ -27,10 +25,12 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
 
   const setCanvasSize = () => {
     setCanvasWidth(
-      Math.floor(window.innerWidth / cellSize) * cellSize - cellSize
+      Math.floor(window.innerWidth / props.cellSize) * props.cellSize -
+        props.cellSize
     );
     setCanvasHeight(
-      Math.floor((window.innerWidth * 0.4) / cellSize) * cellSize - cellSize
+      Math.floor((window.innerHeight * 0.8) / props.cellSize) * props.cellSize -
+        props.cellSize
     );
   };
 

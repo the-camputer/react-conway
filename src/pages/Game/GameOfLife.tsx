@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Stack from '@mui/joy/Stack';
+import Typography from '@mui/joy/Typography';
+import Sheet from '@mui/joy/Sheet';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
-import { styled } from 'styled-components';
-
-const GameContainer = styled.div`
-  display: grid;
-  grid-template-rows: 100px 1fr 100px;
-`;
 
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
@@ -32,15 +29,17 @@ const GameOfLife: React.FC = (props) => {
   }, [tick]);
 
   return (
-    <GameContainer>
-      <header>
-        <div>Conway's Game of Life</div>
-      </header>
-      <GoLField cellSize={50} livingCells={gameState} />
-      <footer>
-        <div>Place controls here</div>
-      </footer>
-    </GameContainer>
+    <Stack spacing={0} justifyContent='center'>
+      <Typography level='display1' variant='solid' id='title'>
+        Conway's Game of Life
+      </Typography>
+      <GoLField cellSize={40} livingCells={gameState} />
+      <Sheet id='control-center'>
+        <Typography level='body1' variant='solid'>
+          Place controls here
+        </Typography>
+      </Sheet>
+    </Stack>
   );
 };
 

@@ -1,4 +1,4 @@
-import GameOfLife from '.';
+import GameOfLife from './GameOfLife';
 import { render, act } from '@testing-library/react';
 
 describe('GameOfLife', () => {
