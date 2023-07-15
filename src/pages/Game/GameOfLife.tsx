@@ -50,6 +50,7 @@ const GameOfLife: React.FC = (props) => {
             size='lg'
             startDecorator={<Pause />}
             onClick={() => setPaused(true)}
+            data-testid='pause-game'
           >
             Pause
           </Button>
@@ -59,6 +60,7 @@ const GameOfLife: React.FC = (props) => {
             size='lg'
             startDecorator={<PlayArrow />}
             onClick={() => setPaused(false)}
+            data-testid='play-game'
           >
             Play
           </Button>

@@ -20,19 +20,35 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
           <canvas
             class="sc-bdnyYQ ebLwqT"
             data-testid="gol-canvas"
-            height="440"
+            height="400"
             width="1880"
           />
         </div>
         <div
-          class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-uxvrk8-JoySheet-root"
-          id="control-center"
+          class="MuiBox-root css-13vkh0a"
         >
-          <p
-            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorNeutral MuiTypography-variantSolid css-1ane2jc-JoyTypography-root"
+          <button
+            class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+            data-testid="pause-game"
+            type="button"
           >
-            Place controls here
-          </p>
+            <span
+              class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="PauseIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                />
+              </svg>
+            </span>
+            Pause
+          </button>
         </div>
       </div>
     </div>
@@ -53,19 +69,35 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
         <canvas
           class="sc-bdnyYQ ebLwqT"
           data-testid="gol-canvas"
-          height="440"
+          height="400"
           width="1880"
         />
       </div>
       <div
-        class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-uxvrk8-JoySheet-root"
-        id="control-center"
+        class="MuiBox-root css-13vkh0a"
       >
-        <p
-          class="MuiTypography-root MuiTypography-body1 MuiTypography-colorNeutral MuiTypography-variantSolid css-1ane2jc-JoyTypography-root"
+        <button
+          class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+          data-testid="pause-game"
+          type="button"
         >
-          Place controls here
-        </p>
+          <span
+            class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="PauseIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+              />
+            </svg>
+          </span>
+          Pause
+        </button>
       </div>
     </div>
   </div>,
