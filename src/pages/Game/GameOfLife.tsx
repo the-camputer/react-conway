@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Stack from '@mui/joy/Stack';
-import Typography from '@mui/joy/Typography';
-import Sheet from '@mui/joy/Sheet';
+import { Stack, Typography, Box, Button } from '@mui/joy';
+import { PlayArrow, Pause } from '@mui/icons-material';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
 
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
+  const [paused, setPaused] = useState<boolean>(false);
   const [gameState, setGameState] = useState<Cell[]>([
     { x: 15, y: 2 },
     { x: 16, y: 3 },
@@ -17,10 +17,12 @@ const GameOfLife: React.FC = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTick((tick) => tick + 1);
+      if (!paused) {
+        setTick((tick) => tick + 1);
+      }
     }, 500);
     return () => clearInterval(interval);
-  }, [setTick]);
+  }, [setTick, paused]);
 
   useEffect(() => {
     if (tick > 0) {
@@ -34,11 +36,34 @@ const GameOfLife: React.FC = (props) => {
         Conway's Game of Life
       </Typography>
       <GoLField cellSize={40} livingCells={gameState} />
-      <Sheet id='control-center'>
-        <Typography level='body1' variant='solid'>
-          Place controls here
-        </Typography>
-      </Sheet>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 2,
+          margin: '10px 0 10px 0',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
+        {!paused && (
+          <Button
+            size='lg'
+            startDecorator={<Pause />}
+            onClick={() => setPaused(true)}
+          >
+            Pause
+          </Button>
+        )}
+        {paused && (
+          <Button
+            size='lg'
+            startDecorator={<PlayArrow />}
+            onClick={() => setPaused(false)}
+          >
+            Play
+          </Button>
+        )}
+      </Box>
     </Stack>
   );
 };

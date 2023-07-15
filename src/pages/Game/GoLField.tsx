@@ -29,7 +29,7 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
         props.cellSize
     );
     setCanvasHeight(
-      Math.floor((window.innerHeight * 0.8) / props.cellSize) * props.cellSize -
+      Math.floor((window.innerHeight * 0.7) / props.cellSize) * props.cellSize -
         props.cellSize
     );
   };
