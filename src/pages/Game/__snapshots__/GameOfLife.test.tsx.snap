@@ -15,10 +15,10 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
           Conway's Game of Life
         </h1>
         <div
-          class="sc-gtsseb fLJXhv"
+          class="sc-gsMHZj eiYyzm"
         >
           <canvas
-            class="sc-bdnyYQ ebLwqT"
+            class="sc-bcHOTY kZGdfh"
             data-testid="gol-canvas"
             height="400"
             width="1880"
@@ -64,10 +64,10 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
         Conway's Game of Life
       </h1>
       <div
-        class="sc-gtsseb fLJXhv"
+        class="sc-gsMHZj eiYyzm"
       >
         <canvas
-          class="sc-bdnyYQ ebLwqT"
+          class="sc-bcHOTY kZGdfh"
           data-testid="gol-canvas"
           height="400"
           width="1880"
