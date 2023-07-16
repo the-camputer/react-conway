@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
-import { calculateGrid, Cell, calculateNextState } from './GameOfLifeService';
+import { calculateGrid, Cell } from './GameOfLifeService';
 
 const Canvas = styled.canvas`
   background-color: #fff;
@@ -14,6 +14,7 @@ const CanvasContainer = styled.div`
 interface GoLFieldProperties {
   cellSize: number;
   livingCells?: Cell[];
+  toggleFn: (clicked: Cell) => void;
 }
 
 const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
@@ -22,6 +23,7 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>();
   const [canvasWidth, setCanvasWidth] = useState<number>(window.innerWidth);
   const [canvasHeight, setCanvasHeight] = useState<number>(window.innerHeight);
+  const [grid, setGrid] = useState<Cell[]>();
 
   const setCanvasSize = () => {
     setCanvasWidth(
@@ -52,22 +54,37 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
 
   useEffect(() => {
     if (context && props.livingCells) {
-      const field = calculateGrid(
-        props.cellSize,
-        canvasWidth,
-        canvasHeight,
-        props.livingCells
+      setGrid(
+        calculateGrid(
+          props.cellSize,
+          canvasWidth,
+          canvasHeight,
+          props.livingCells
+        )
       );
+    }
+  }, [context, props.cellSize, props.livingCells, canvasWidth, canvasHeight]);
 
-      field.forEach((cell) => {
+  useEffect(() => {
+    if (grid && context) {
+      grid.forEach((cell) => {
         context.beginPath();
         context.fillStyle = cell.alive ? 'yellow' : 'gray';
         context.fillRect(cell.x, cell.y, cell.h ?? 0, cell.w ?? 0);
       });
-
-      calculateNextState(props.livingCells);
     }
-  }, [context, props.cellSize, props.livingCells, canvasWidth, canvasHeight]);
+  }, [context, grid]);
+
+  const handleUserInput = (e: any) => {
+    const xClicked = e.clientX - canvas!.offsetLeft;
+    const yClicked = e.clientY - canvas!.offsetTop;
+    let gridX = Math.floor(xClicked / props.cellSize);
+    let gridY = Math.floor(yClicked / props.cellSize);
+
+    props.toggleFn({ x: gridX, y: gridY });
+
+    console.log(gridX, gridY);
+  };
 
   return (
     <CanvasContainer>
@@ -76,6 +93,7 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
         ref={canvasRef}
         height={canvasHeight}
         width={canvasWidth}
+        onClick={handleUserInput}
       />
     </CanvasContainer>
   );

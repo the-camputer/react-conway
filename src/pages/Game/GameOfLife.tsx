@@ -30,12 +30,23 @@ const GameOfLife: React.FC = (props) => {
     }
   }, [tick]);
 
+  const toggleCell = (clicked: Cell) => {
+    const clickedIndex = gameState.findIndex(
+      (cell) => cell.x === clicked.x && cell.y === clicked.y
+    );
+    if (clickedIndex >= 0) {
+      setGameState(gameState.filter((_cell, index) => index !== clickedIndex));
+    } else {
+      setGameState([...gameState, { ...clicked }]);
+    }
+  };
+
   return (
     <Stack spacing={0} justifyContent='center'>
       <Typography level='display1' variant='solid' id='title'>
         Conway's Game of Life
       </Typography>
-      <GoLField cellSize={40} livingCells={gameState} />
+      <GoLField cellSize={40} livingCells={gameState} toggleFn={toggleCell} />
       <Box
         sx={{
           display: 'flex',
