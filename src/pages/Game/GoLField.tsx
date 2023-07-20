@@ -82,8 +82,6 @@ const GoLField: React.FC<GoLFieldProperties> = (props: GoLFieldProperties) => {
     let gridY = Math.floor(yClicked / props.cellSize);
 
     props.toggleFn({ x: gridX, y: gridY });
-
-    console.log(gridX, gridY);
   };
 
   return (

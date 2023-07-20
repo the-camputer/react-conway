@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
+exports[`GameOfLife renders game without crashing 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -23,6 +23,11 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
             height="400"
             width="1880"
           />
+        </div>
+        <div
+          data-testid="game-data"
+        >
+          [{"x":14,"y":3,"alive":true},{"x":16,"y":3,"alive":true},{"x":15,"y":4,"alive":true},{"x":16,"y":4,"alive":true},{"x":15,"y":5,"alive":true}]
         </div>
         <div
           class="MuiBox-root css-13vkh0a"
@@ -72,6 +77,11 @@ exports[`GameOfLife Doesn't crash while rendering state updates 1`] = `
           height="400"
           width="1880"
         />
+      </div>
+      <div
+        data-testid="game-data"
+      >
+        [{"x":14,"y":3,"alive":true},{"x":16,"y":3,"alive":true},{"x":15,"y":4,"alive":true},{"x":16,"y":4,"alive":true},{"x":15,"y":5,"alive":true}]
       </div>
       <div
         class="MuiBox-root css-13vkh0a"
