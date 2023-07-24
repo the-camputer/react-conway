@@ -4,6 +4,8 @@ import { PlayArrow, Pause } from '@mui/icons-material';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
 
+const env = process.env.NODE_ENV;
+
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
   const [paused, setPaused] = useState<boolean>(false);
@@ -30,12 +32,26 @@ const GameOfLife: React.FC = (props) => {
     }
   }, [tick]);
 
+  const toggleCell = (clicked: Cell) => {
+    const clickedIndex = gameState.findIndex(
+      (cell) => cell.x === clicked.x && cell.y === clicked.y
+    );
+    if (clickedIndex >= 0) {
+      setGameState(gameState.filter((_cell, index) => index !== clickedIndex));
+    } else {
+      setGameState([...gameState, { ...clicked }]);
+    }
+  };
+
   return (
     <Stack spacing={0} justifyContent='center'>
       <Typography level='display1' variant='solid' id='title'>
         Conway's Game of Life
       </Typography>
-      <GoLField cellSize={40} livingCells={gameState} />
+      <GoLField cellSize={40} livingCells={gameState} toggleFn={toggleCell} />
+      {env === 'test' && (
+        <div data-testid='game-data'>{JSON.stringify(gameState)}</div>
+      )}
       <Box
         sx={{
           display: 'flex',

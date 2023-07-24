@@ -21,7 +21,7 @@ describe('GolField', () => {
 
     global.innerHeight = 600;
     global.innerWidth = 800;
-    render(<GoLField cellSize={50} livingCells={[]} />);
+    render(<GoLField cellSize={50} livingCells={[]} toggleFn={() => {}} />);
     const canvas = screen.getByTestId('gol-canvas');
     expect(canvas).toHaveAttribute('width', '750');
     expect(canvas).toHaveAttribute('height', '350');

@@ -9,7 +9,7 @@
     "@mui/icons-material": "^5.14.0",
     "@mui/joy": "^5.0.0-alpha.87",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.37",
     "@types/react": "^18.2.14",
