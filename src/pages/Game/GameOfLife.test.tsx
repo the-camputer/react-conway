@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import GameOfLife from './GameOfLife';
-import { render, act, screen, fireEvent } from '@testing-library/react';
+import { render, act, screen } from '@testing-library/react';
 
 global.innerWidth = 1920;
 global.innerHeight = 640;
