@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Stack, Typography, Box, Button } from '@mui/joy';
-import { PlayArrow, Pause } from '@mui/icons-material';
+import { Replay, PlayArrow, Pause } from '@mui/icons-material';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
 
@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV;
 
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
-  const [paused, setPaused] = useState<boolean>(false);
+  const [paused, setPaused] = useState<boolean>(true);
   const [gameState, setGameState] = useState<Cell[]>([
     { x: 15, y: 2 },
     { x: 16, y: 3 },
@@ -16,6 +16,13 @@ const GameOfLife: React.FC = (props) => {
     { x: 15, y: 4 },
     { x: 16, y: 4 },
   ]);
+  const [startingGameState, setStartingGameState] = useState<Cell[]>(gameState);
+
+  useEffect(() => {
+    if (tick === 0) {
+      setStartingGameState(gameState);
+    }
+  }, [gameState, tick]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,6 +48,11 @@ const GameOfLife: React.FC = (props) => {
     } else {
       setGameState([...gameState, { ...clicked }]);
     }
+  };
+
+  const reset = () => {
+    setGameState(startingGameState);
+    setTick(0);
   };
 
   return (
@@ -79,6 +91,16 @@ const GameOfLife: React.FC = (props) => {
             data-testid='play-game'
           >
             Play
+          </Button>
+        )}
+        {tick > 0 && (
+          <Button
+            size='lg'
+            startDecorator={<Replay />}
+            onClick={reset}
+            data-testid='reset-game'
+          >
+            Reset
           </Button>
         )}
       </Box>

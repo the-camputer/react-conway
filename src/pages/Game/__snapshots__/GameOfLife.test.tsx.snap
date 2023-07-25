@@ -27,14 +27,14 @@ exports[`GameOfLife renders game without crashing 1`] = `
         <div
           data-testid="game-data"
         >
-          [{"x":14,"y":3,"alive":true},{"x":16,"y":3,"alive":true},{"x":15,"y":4,"alive":true},{"x":16,"y":4,"alive":true},{"x":15,"y":5,"alive":true}]
+          [{"x":15,"y":2},{"x":16,"y":3},{"x":14,"y":4},{"x":15,"y":4},{"x":16,"y":4}]
         </div>
         <div
           class="MuiBox-root css-13vkh0a"
         >
           <button
             class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
-            data-testid="pause-game"
+            data-testid="play-game"
             type="button"
           >
             <span
@@ -43,16 +43,16 @@ exports[`GameOfLife renders game without crashing 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PauseIcon"
+                data-testid="PlayArrowIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
                 <path
-                  d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                  d="M8 5v14l11-7z"
                 />
               </svg>
             </span>
-            Pause
+            Play
           </button>
         </div>
       </div>
@@ -81,14 +81,14 @@ exports[`GameOfLife renders game without crashing 1`] = `
       <div
         data-testid="game-data"
       >
-        [{"x":14,"y":3,"alive":true},{"x":16,"y":3,"alive":true},{"x":15,"y":4,"alive":true},{"x":16,"y":4,"alive":true},{"x":15,"y":5,"alive":true}]
+        [{"x":15,"y":2},{"x":16,"y":3},{"x":14,"y":4},{"x":15,"y":4},{"x":16,"y":4}]
       </div>
       <div
         class="MuiBox-root css-13vkh0a"
       >
         <button
           class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
-          data-testid="pause-game"
+          data-testid="play-game"
           type="button"
         >
           <span
@@ -97,16 +97,16 @@ exports[`GameOfLife renders game without crashing 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="PauseIcon"
+              data-testid="PlayArrowIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
               <path
-                d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                d="M8 5v14l11-7z"
               />
             </svg>
           </span>
-          Pause
+          Play
         </button>
       </div>
     </div>

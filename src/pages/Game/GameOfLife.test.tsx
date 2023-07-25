@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import GameOfLife from './GameOfLife';
-import { render, act, screen, fireEvent } from '@testing-library/react';
+import { render, act, screen } from '@testing-library/react';
 
 global.innerWidth = 1920;
 global.innerHeight = 640;
@@ -12,16 +12,18 @@ describe('GameOfLife', () => {
 
   it('renders game without crashing', () => {
     let view = render(<GameOfLife />);
-    act(() => {
-      jest.advanceTimersByTime(500);
-    });
     expect(view).toMatchSnapshot();
   });
 
-  it('calcualtes a new game state on a regular cadence', async () => {
+  it('calcualtes a new game state on a regular cadence during play', async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     render(<GameOfLife />);
 
     let gameState1 = JSON.parse(screen.getByTestId('game-data').textContent!);
+
+    await act(async () => {
+      await user.click(screen.getByTestId('play-game'));
+    });
 
     act(() => {
       jest.advanceTimersByTime(500);
@@ -36,9 +38,7 @@ describe('GameOfLife', () => {
   it('adds a clicked cell that is currently dead to the game state to be rendered alive', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     render(<GameOfLife />);
-    act(() => {
-      jest.advanceTimersByTime(500);
-    });
+
     await act(async () => {
       await user.pointer({
         keys: '[MouseLeft]',
@@ -53,19 +53,19 @@ describe('GameOfLife', () => {
     );
   });
 
-  it('Shows a pause button when the game first starts', () => {
+  it('Shows a play button when the game first starts', () => {
     render(<GameOfLife />);
-    expect(screen.getByTestId('pause-game')).toBeInTheDocument();
+    expect(screen.getByTestId('play-game')).toBeInTheDocument();
   });
 
-  it('Switches the pause button to play when pressed', async () => {
+  it('Switches the play button to pause when pressed', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     render(<GameOfLife />);
     await act(async () => {
-      await user.click(screen.getByTestId('pause-game'));
+      await user.click(screen.getByTestId('play-game'));
     });
 
-    expect(screen.getByTestId('play-game')).toBeInTheDocument();
+    expect(screen.getByTestId('pause-game')).toBeInTheDocument();
   });
 
   it('Switches the play button back to pause when pressed', async () => {
@@ -73,13 +73,13 @@ describe('GameOfLife', () => {
 
     render(<GameOfLife />);
     await act(async () => {
-      await user.click(screen.getByTestId('pause-game'));
-    });
-
-    await act(async () => {
       await user.click(screen.getByTestId('play-game'));
     });
 
-    expect(screen.getByTestId('pause-game')).toBeInTheDocument();
+    await act(async () => {
+      await user.click(screen.getByTestId('pause-game'));
+    });
+
+    expect(screen.getByTestId('play-game')).toBeInTheDocument();
   });
 });
