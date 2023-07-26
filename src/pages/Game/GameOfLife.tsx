@@ -97,7 +97,7 @@ const GameOfLife: React.FC = (props) => {
             Play
           </Button>
         )}
-        {tick == 0 && (
+        {tick === 0 && (
           <Button
             size='lg'
             startDecorator={<Clear />}
