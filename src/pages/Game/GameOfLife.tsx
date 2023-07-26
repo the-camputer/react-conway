@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Stack, Typography, Box, Button } from '@mui/joy';
-import { Replay, PlayArrow, Pause } from '@mui/icons-material';
+import { Clear, Replay, PlayArrow, Pause } from '@mui/icons-material';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
 
@@ -55,6 +55,10 @@ const GameOfLife: React.FC = (props) => {
     setTick(0);
   };
 
+  const clear = () => {
+    setGameState([]);
+  };
+
   return (
     <Stack spacing={0} justifyContent='center'>
       <Typography level='display1' variant='solid' id='title'>
@@ -91,6 +95,16 @@ const GameOfLife: React.FC = (props) => {
             data-testid='play-game'
           >
             Play
+          </Button>
+        )}
+        {tick === 0 && (
+          <Button
+            size='lg'
+            startDecorator={<Clear />}
+            onClick={clear}
+            data-testid='clear-game'
+          >
+            Clear
           </Button>
         )}
         {tick > 0 && (

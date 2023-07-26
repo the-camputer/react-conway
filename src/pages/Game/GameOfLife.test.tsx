@@ -53,33 +53,102 @@ describe('GameOfLife', () => {
     );
   });
 
-  it('Shows a play button when the game first starts', () => {
-    render(<GameOfLife />);
-    expect(screen.getByTestId('play-game')).toBeInTheDocument();
-  });
+  describe('buttons', () => {
+    describe('Pause & Play', () => {
+      it('A play button appears when the game first starts', () => {
+        render(<GameOfLife />);
+        expect(screen.getByTestId('play-game')).toBeInTheDocument();
+      });
 
-  it('Switches the play button to pause when pressed', async () => {
-    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
-    render(<GameOfLife />);
-    await act(async () => {
-      await user.click(screen.getByTestId('play-game'));
+      it('Play button switches to pause when pressed', async () => {
+        const user = userEvent.setup({
+          advanceTimers: jest.advanceTimersByTime,
+        });
+        render(<GameOfLife />);
+        await act(async () => {
+          await user.click(screen.getByTestId('play-game'));
+        });
+
+        expect(screen.getByTestId('pause-game')).toBeInTheDocument();
+      });
+
+      it('Pause button switches to play when pressed', async () => {
+        const user = userEvent.setup({
+          advanceTimers: jest.advanceTimersByTime,
+        });
+
+        render(<GameOfLife />);
+        await act(async () => {
+          await user.click(screen.getByTestId('play-game'));
+        });
+
+        await act(async () => {
+          await user.click(screen.getByTestId('pause-game'));
+        });
+
+        expect(screen.getByTestId('play-game')).toBeInTheDocument();
+      });
     });
+    describe('Reset & Clear', () => {
+      it('Clear button appears at tick 0 and reset button does not', async () => {
+        render(<GameOfLife />);
+        expect(screen.getByTestId('clear-game')).toBeInTheDocument();
+        expect(screen.queryByTestId('reset-game')).not.toBeInTheDocument();
+      });
 
-    expect(screen.getByTestId('pause-game')).toBeInTheDocument();
-  });
+      it('Clear button empties the game state', async () => {
+        const user = userEvent.setup({
+          advanceTimers: jest.advanceTimersByTime,
+        });
+        render(<GameOfLife />);
+        const gameState1 = JSON.parse(
+          screen.getByTestId('game-data').textContent!
+        );
+        await act(async () => {
+          user.click(screen.getByTestId('clear-game'));
+        });
+        const gameState2 = JSON.parse(
+          screen.getByTestId('game-data').textContent!
+        );
 
-  it('Switches the play button back to pause when pressed', async () => {
-    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+        expect(gameState1.length).toBeGreaterThan(0);
+        expect(gameState2.length).toBe(0);
+      });
 
-    render(<GameOfLife />);
-    await act(async () => {
-      await user.click(screen.getByTestId('play-game'));
+      it('Reset button sets the game state back to what it was at tick 0', async () => {
+        const user = userEvent.setup({
+          advanceTimers: jest.advanceTimersByTime,
+        });
+
+        render(<GameOfLife />);
+
+        const gameState1 = JSON.parse(
+          screen.getByTestId('game-data').textContent!
+        );
+
+        await act(async () => {
+          await user.click(screen.getByTestId('play-game'));
+        });
+
+        act(() => {
+          jest.advanceTimersByTime(501);
+        });
+
+        const gameState2 = JSON.parse(
+          screen.getByTestId('game-data').textContent!
+        );
+
+        await act(async () => {
+          await user.click(screen.getByTestId('reset-game'));
+        });
+
+        const gameState3 = JSON.parse(
+          screen.getByTestId('game-data').textContent!
+        );
+
+        expect(gameState2).not.toEqual(gameState1);
+        expect(gameState3).toEqual(gameState1);
+      });
     });
-
-    await act(async () => {
-      await user.click(screen.getByTestId('pause-game'));
-    });
-
-    expect(screen.getByTestId('play-game')).toBeInTheDocument();
   });
 });
