@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Stack, Typography, Box, Button } from '@mui/joy';
+import {
+  Stack,
+  Typography,
+  Box,
+  Button,
+  Slider,
+  FormControl,
+  FormLabel,
+} from '@mui/joy';
 import { Clear, Replay, PlayArrow, Pause } from '@mui/icons-material';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
 
 const env = process.env.NODE_ENV;
 
+const defaultCellSize = 40;
+
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
   const [paused, setPaused] = useState<boolean>(true);
+  const [cellSize, setCellSize] = useState<number>(defaultCellSize);
   const [gameState, setGameState] = useState<Cell[]>([
     { x: 15, y: 2 },
     { x: 16, y: 3 },
@@ -59,12 +70,28 @@ const GameOfLife: React.FC = (props) => {
     setGameState([]);
   };
 
+  const scaleCell = (
+    _event: Event,
+    value: number | number[],
+    _activeThumb: number
+  ) => {
+    if (Array.isArray(value)) {
+      setCellSize(value[0]);
+    } else {
+      setCellSize(value);
+    }
+  };
+
   return (
     <Stack spacing={0} justifyContent='center'>
       <Typography level='display1' variant='solid' id='title'>
         Conway's Game of Life
       </Typography>
-      <GoLField cellSize={40} livingCells={gameState} toggleFn={toggleCell} />
+      <GoLField
+        cellSize={cellSize}
+        livingCells={gameState}
+        toggleFn={toggleCell}
+      />
       {env === 'test' && (
         <div data-testid='game-data'>{JSON.stringify(gameState)}</div>
       )}
@@ -117,6 +144,28 @@ const GameOfLife: React.FC = (props) => {
             Reset
           </Button>
         )}
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 10,
+          margin: '10px 10px 10px 10px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
+        <FormControl sx={{ flexGrow: 0 }}>
+          <FormLabel>Cell Size</FormLabel>
+          <Slider
+            size='lg'
+            defaultValue={defaultCellSize}
+            min={10}
+            max={100}
+            step={2}
+            onChange={scaleCell}
+            sx={{ width: 200 }}
+          />
+        </FormControl>
       </Box>
     </Stack>
   );
