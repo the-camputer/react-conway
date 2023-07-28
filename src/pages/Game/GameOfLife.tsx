@@ -15,11 +15,13 @@ import { Cell, calculateNextState } from './GameOfLifeService';
 const env = process.env.NODE_ENV;
 
 const defaultCellSize = 40;
+const defaultUpdateSpeed = 500;
 
 const GameOfLife: React.FC = (props) => {
   const [tick, setTick] = useState<number>(0);
   const [paused, setPaused] = useState<boolean>(true);
   const [cellSize, setCellSize] = useState<number>(defaultCellSize);
+  const [updateSpeed, setUpdateSpeed] = useState<number>(defaultUpdateSpeed);
   const [gameState, setGameState] = useState<Cell[]>([
     { x: 15, y: 2 },
     { x: 16, y: 3 },
@@ -40,9 +42,9 @@ const GameOfLife: React.FC = (props) => {
       if (!paused) {
         setTick((tick) => tick + 1);
       }
-    }, 500);
+    }, updateSpeed);
     return () => clearInterval(interval);
-  }, [setTick, paused]);
+  }, [setTick, paused, updateSpeed]);
 
   useEffect(() => {
     if (tick > 0) {
@@ -79,6 +81,18 @@ const GameOfLife: React.FC = (props) => {
       setCellSize(value[0]);
     } else {
       setCellSize(value);
+    }
+  };
+
+  const scaleUpdateSpeed = (
+    _event: Event,
+    value: number | number[],
+    _activeThumb: number
+  ) => {
+    if (Array.isArray(value)) {
+      setUpdateSpeed(value[0]);
+    } else {
+      setUpdateSpeed(value);
     }
   };
 
@@ -171,6 +185,26 @@ const GameOfLife: React.FC = (props) => {
             max={100}
             step={2}
             onChange={scaleCell}
+            sx={{ width: 200 }}
+          />
+        </FormControl>
+        <FormControl sx={{ flexGrow: 0 }}>
+          <FormLabel>
+            Update Speed{' '}
+            {env === 'test' && (
+              <p data-testid='update-speed'>{updateSpeed.toString()}</p>
+            )}
+          </FormLabel>
+          <Slider
+            size='lg'
+            defaultValue={defaultUpdateSpeed}
+            slotProps={{
+              rail: { 'data-testid': 'update-speed-rail' },
+            }}
+            min={50}
+            max={1000}
+            step={10}
+            onChange={scaleUpdateSpeed}
             sx={{ width: 200 }}
           />
         </FormControl>
