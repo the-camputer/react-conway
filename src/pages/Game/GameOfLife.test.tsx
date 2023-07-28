@@ -193,6 +193,47 @@ describe('GameOfLife', () => {
           expect(newCellSize).toBeGreaterThan(originalCellSize);
         });
       });
+
+      describe('Update Speed', () => {
+        it('starts with default speed', () => {
+          render(<GameOfLife />);
+          const cellSize = parseInt(
+            screen.getByTestId('update-speed').textContent!
+          );
+          expect(cellSize).toBe(500);
+        });
+
+        it('changes the update speed when the slider adjusts', async () => {
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+
+          render(<GameOfLife />);
+
+          const sliderRail = screen.getByTestId('update-speed-rail');
+
+          const originalCellSize = parseInt(
+            screen.getByTestId('update-speed').textContent!
+          );
+
+          await act(async () => {
+            await user.pointer({
+              keys: '[MouseLeft]',
+              target: sliderRail,
+              coords: {
+                x: sliderRail.clientLeft + 20,
+                y: sliderRail.clientTop,
+              },
+            });
+          });
+
+          const newCellSize = parseInt(
+            screen.getByTestId('update-speed').textContent!
+          );
+
+          expect(newCellSize).toBeGreaterThan(originalCellSize);
+        });
+      });
     });
   });
 });

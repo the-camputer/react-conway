@@ -129,6 +129,55 @@ exports[`GameOfLife renders game without crashing 1`] = `
               </span>
             </span>
           </div>
+          <div
+            class="MuiFormControl-root MuiFormControl-vertical MuiFormControl-sizeMd css-1qd75b7-JoyFormControl-root"
+          >
+            <label
+              class="MuiFormLabel-root css-4az1jf-JoyFormLabel-root"
+              for=":r1:"
+              id=":r1:-label"
+            >
+              Update Speed
+               
+              <p
+                data-testid="update-speed"
+              >
+                500
+              </p>
+            </label>
+            <span
+              class="MuiSlider-root MuiSlider-variantSolid MuiSlider-colorPrimary MuiSlider-sizeLg css-1n12bqn-JoySlider-root"
+            >
+              <span
+                class="MuiSlider-rail css-25lf7d-JoySlider-rail"
+                data-testid="update-speed-rail"
+              />
+              <span
+                class="MuiSlider-track css-1jq9w0k-JoySlider-track"
+                style="left: 0%; width: 47.36842105263158%;"
+              />
+              <span
+                class="MuiSlider-thumb css-1yv1cbk-JoySlider-thumb"
+                data-index="0"
+                style="left: 47.36842105263158%;"
+              >
+                <input
+                  aria-orientation="horizontal"
+                  aria-valuemax="1000"
+                  aria-valuemin="50"
+                  aria-valuenow="500"
+                  class="MuiSlider-input css-1aiebgt-JoySlider-input"
+                  data-index="0"
+                  max="1000"
+                  min="50"
+                  step="10"
+                  style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+                  type="range"
+                  value="500"
+                />
+              </span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -254,6 +303,55 @@ exports[`GameOfLife renders game without crashing 1`] = `
                 style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
                 type="range"
                 value="40"
+              />
+            </span>
+          </span>
+        </div>
+        <div
+          class="MuiFormControl-root MuiFormControl-vertical MuiFormControl-sizeMd css-1qd75b7-JoyFormControl-root"
+        >
+          <label
+            class="MuiFormLabel-root css-4az1jf-JoyFormLabel-root"
+            for=":r1:"
+            id=":r1:-label"
+          >
+            Update Speed
+             
+            <p
+              data-testid="update-speed"
+            >
+              500
+            </p>
+          </label>
+          <span
+            class="MuiSlider-root MuiSlider-variantSolid MuiSlider-colorPrimary MuiSlider-sizeLg css-1n12bqn-JoySlider-root"
+          >
+            <span
+              class="MuiSlider-rail css-25lf7d-JoySlider-rail"
+              data-testid="update-speed-rail"
+            />
+            <span
+              class="MuiSlider-track css-1jq9w0k-JoySlider-track"
+              style="left: 0%; width: 47.36842105263158%;"
+            />
+            <span
+              class="MuiSlider-thumb css-1yv1cbk-JoySlider-thumb"
+              data-index="0"
+              style="left: 47.36842105263158%;"
+            >
+              <input
+                aria-orientation="horizontal"
+                aria-valuemax="1000"
+                aria-valuemin="50"
+                aria-valuenow="500"
+                class="MuiSlider-input css-1aiebgt-JoySlider-input"
+                data-index="0"
+                max="1000"
+                min="50"
+                step="10"
+                style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+                type="range"
+                value="500"
               />
             </span>
           </span>
