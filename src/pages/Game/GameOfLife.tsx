@@ -155,10 +155,18 @@ const GameOfLife: React.FC = (props) => {
         }}
       >
         <FormControl sx={{ flexGrow: 0 }}>
-          <FormLabel>Cell Size</FormLabel>
+          <FormLabel>
+            Cell Size{' '}
+            {env === 'test' && (
+              <p data-testid='cell-size'>{cellSize.toString()}</p>
+            )}
+          </FormLabel>
           <Slider
             size='lg'
             defaultValue={defaultCellSize}
+            slotProps={{
+              rail: { 'data-testid': 'cell-size-rail' },
+            }}
             min={10}
             max={100}
             step={2}

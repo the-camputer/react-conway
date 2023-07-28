@@ -89,6 +89,7 @@ describe('GameOfLife', () => {
         expect(screen.getByTestId('play-game')).toBeInTheDocument();
       });
     });
+
     describe('Reset & Clear', () => {
       it('Clear button appears at tick 0 and reset button does not', async () => {
         render(<GameOfLife />);
@@ -148,6 +149,49 @@ describe('GameOfLife', () => {
 
         expect(gameState2).not.toEqual(gameState1);
         expect(gameState3).toEqual(gameState1);
+      });
+    });
+
+    describe('Grid Manipulators', () => {
+      describe('Cell Size', () => {
+        it('starts with default size', () => {
+          render(<GameOfLife />);
+          const cellSize = parseInt(
+            screen.getByTestId('cell-size').textContent!
+          );
+          expect(cellSize).toBe(40);
+        });
+
+        it('changes the size of the grid when the slider adjusts', async () => {
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+
+          render(<GameOfLife />);
+
+          const sliderRail = screen.getByTestId('cell-size-rail');
+
+          const originalCellSize = parseInt(
+            screen.getByTestId('cell-size').textContent!
+          );
+
+          await act(async () => {
+            await user.pointer({
+              keys: '[MouseLeft]',
+              target: sliderRail,
+              coords: {
+                x: sliderRail.clientLeft + 20,
+                y: sliderRail.clientTop,
+              },
+            });
+          });
+
+          const newCellSize = parseInt(
+            screen.getByTestId('cell-size').textContent!
+          );
+
+          expect(newCellSize).toBeGreaterThan(originalCellSize);
+        });
       });
     });
   });
