@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import {
   Stack,
   Typography,
-  Box,
   Button,
   Slider,
+  Sheet,
   FormControl,
   FormLabel,
 } from '@mui/joy';
@@ -109,7 +109,7 @@ const GameOfLife: React.FC = (props) => {
       {env === 'test' && (
         <div data-testid='game-data'>{JSON.stringify(gameState)}</div>
       )}
-      <Box
+      <Sheet
         sx={{
           display: 'flex',
           gap: 2,
@@ -158,8 +158,8 @@ const GameOfLife: React.FC = (props) => {
             Reset
           </Button>
         )}
-      </Box>
-      <Box
+      </Sheet>
+      <Sheet
         sx={{
           display: 'flex',
           gap: 10,
@@ -208,7 +208,7 @@ const GameOfLife: React.FC = (props) => {
             sx={{ width: 200 }}
           />
         </FormControl>
-      </Box>
+      </Sheet>
     </Stack>
   );
 };
