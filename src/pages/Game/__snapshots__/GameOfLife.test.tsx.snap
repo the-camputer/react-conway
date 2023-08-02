@@ -30,7 +30,7 @@ exports[`GameOfLife renders game without crashing 1`] = `
           [{"x":15,"y":2},{"x":16,"y":3},{"x":14,"y":4},{"x":15,"y":4},{"x":16,"y":4}]
         </div>
         <div
-          class="MuiBox-root css-13vkh0a"
+          class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-1bqfkf2-JoySheet-root"
         >
           <button
             class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
@@ -78,7 +78,7 @@ exports[`GameOfLife renders game without crashing 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-1fs6ryl"
+          class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-lmwrr5-JoySheet-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-vertical MuiFormControl-sizeMd css-1qd75b7-JoyFormControl-root"
@@ -208,7 +208,7 @@ exports[`GameOfLife renders game without crashing 1`] = `
         [{"x":15,"y":2},{"x":16,"y":3},{"x":14,"y":4},{"x":15,"y":4},{"x":16,"y":4}]
       </div>
       <div
-        class="MuiBox-root css-13vkh0a"
+        class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-1bqfkf2-JoySheet-root"
       >
         <button
           class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
@@ -256,7 +256,7 @@ exports[`GameOfLife renders game without crashing 1`] = `
         </button>
       </div>
       <div
-        class="MuiBox-root css-1fs6ryl"
+        class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-lmwrr5-JoySheet-root"
       >
         <div
           class="MuiFormControl-root MuiFormControl-vertical MuiFormControl-sizeMd css-1qd75b7-JoyFormControl-root"
