@@ -8,12 +8,41 @@ exports[`GameOfLife renders game without crashing 1`] = `
       <div
         class="MuiStack-root css-dxtbbu-JoyStack-root"
       >
-        <h1
-          class="MuiTypography-root MuiTypography-display1 MuiTypography-colorNeutral MuiTypography-variantSolid css-16qvs2p-JoyTypography-root"
-          id="title"
+        <div
+          class="MuiSheet-root MuiSheet-variantSolid MuiSheet-colorNeutral css-ngf6t7-JoySheet-root"
         >
-          Conway's Game of Life
-        </h1>
+          <div
+            class="MuiStack-root css-160kpx8-JoyStack-root"
+          >
+            <a
+              data-testid="home-link"
+              href="/"
+              style="margin-left: 10px;"
+            >
+              <button
+                class="MuiIconButton-root MuiIconButton-variantSolid MuiIconButton-colorPrimary MuiIconButton-sizeMd css-1u75bwp-JoyIconButton-root"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="HomeIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                  />
+                </svg>
+              </button>
+            </a>
+            <h1
+              class="MuiTypography-root MuiTypography-h1 css-elziaj-JoyTypography-root"
+            >
+              Conway's Game of Life
+            </h1>
+          </div>
+        </div>
         <div
           class="sc-gsMHZj eiYyzm"
         >
@@ -186,12 +215,41 @@ exports[`GameOfLife renders game without crashing 1`] = `
     <div
       class="MuiStack-root css-dxtbbu-JoyStack-root"
     >
-      <h1
-        class="MuiTypography-root MuiTypography-display1 MuiTypography-colorNeutral MuiTypography-variantSolid css-16qvs2p-JoyTypography-root"
-        id="title"
+      <div
+        class="MuiSheet-root MuiSheet-variantSolid MuiSheet-colorNeutral css-ngf6t7-JoySheet-root"
       >
-        Conway's Game of Life
-      </h1>
+        <div
+          class="MuiStack-root css-160kpx8-JoyStack-root"
+        >
+          <a
+            data-testid="home-link"
+            href="/"
+            style="margin-left: 10px;"
+          >
+            <button
+              class="MuiIconButton-root MuiIconButton-variantSolid MuiIconButton-colorPrimary MuiIconButton-sizeMd css-1u75bwp-JoyIconButton-root"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="HomeIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                />
+              </svg>
+            </button>
+          </a>
+          <h1
+            class="MuiTypography-root MuiTypography-h1 css-elziaj-JoyTypography-root"
+          >
+            Conway's Game of Life
+          </h1>
+        </div>
+      </div>
       <div
         class="sc-gsMHZj eiYyzm"
       >

@@ -102,7 +102,7 @@ const GameOfLife: React.FC = (props) => {
     <Stack spacing={0} justifyContent='center'>
       <Sheet variant='solid'>
         <Stack direction='row' justifyContent='center' alignItems='center'>
-          <Link to='/' style={{ marginLeft: '10px' }}>
+          <Link to='/' style={{ marginLeft: '10px' }} data-testid='home-link'>
             <IconButton variant='solid'>
               <Home />
             </IconButton>

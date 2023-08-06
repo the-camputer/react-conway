@@ -17,6 +17,7 @@ exports[`Home renders without crashing 1`] = `
             Game of Life
           </h1>
           <a
+            data-testid="play-link"
             href="/game"
           >
             <button
@@ -43,6 +44,7 @@ exports[`Home renders without crashing 1`] = `
           Game of Life
         </h1>
         <a
+          data-testid="play-link"
           href="/game"
         >
           <button

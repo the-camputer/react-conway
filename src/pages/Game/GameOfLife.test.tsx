@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import GameOfLife from './GameOfLife';
 import { render, act, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 global.innerWidth = 1920;
 global.innerHeight = 640;
@@ -11,13 +12,13 @@ describe('GameOfLife', () => {
   });
 
   it('renders game without crashing', () => {
-    let view = render(<GameOfLife />);
+    let view = render(<GameOfLife />, { wrapper: BrowserRouter });
     expect(view).toMatchSnapshot();
   });
 
   it('calcualtes a new game state on a regular cadence during play', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
-    render(<GameOfLife />);
+    render(<GameOfLife />, { wrapper: BrowserRouter });
 
     let gameState1 = JSON.parse(screen.getByTestId('game-data').textContent!);
 
@@ -37,7 +38,7 @@ describe('GameOfLife', () => {
 
   it('adds a clicked cell that is currently dead to the game state to be rendered alive', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
-    render(<GameOfLife />);
+    render(<GameOfLife />, { wrapper: BrowserRouter });
 
     await act(async () => {
       await user.pointer({
@@ -56,7 +57,7 @@ describe('GameOfLife', () => {
   describe('buttons', () => {
     describe('Pause & Play', () => {
       it('A play button appears when the game first starts', () => {
-        render(<GameOfLife />);
+        render(<GameOfLife />, { wrapper: BrowserRouter });
         expect(screen.getByTestId('play-game')).toBeInTheDocument();
       });
 
@@ -64,7 +65,7 @@ describe('GameOfLife', () => {
         const user = userEvent.setup({
           advanceTimers: jest.advanceTimersByTime,
         });
-        render(<GameOfLife />);
+        render(<GameOfLife />, { wrapper: BrowserRouter });
         await act(async () => {
           await user.click(screen.getByTestId('play-game'));
         });
@@ -77,7 +78,7 @@ describe('GameOfLife', () => {
           advanceTimers: jest.advanceTimersByTime,
         });
 
-        render(<GameOfLife />);
+        render(<GameOfLife />, { wrapper: BrowserRouter });
         await act(async () => {
           await user.click(screen.getByTestId('play-game'));
         });
@@ -92,7 +93,7 @@ describe('GameOfLife', () => {
 
     describe('Reset & Clear', () => {
       it('Clear button appears at tick 0 and reset button does not', async () => {
-        render(<GameOfLife />);
+        render(<GameOfLife />, { wrapper: BrowserRouter });
         expect(screen.getByTestId('clear-game')).toBeInTheDocument();
         expect(screen.queryByTestId('reset-game')).not.toBeInTheDocument();
       });
@@ -101,7 +102,7 @@ describe('GameOfLife', () => {
         const user = userEvent.setup({
           advanceTimers: jest.advanceTimersByTime,
         });
-        render(<GameOfLife />);
+        render(<GameOfLife />, { wrapper: BrowserRouter });
         const gameState1 = JSON.parse(
           screen.getByTestId('game-data').textContent!
         );
@@ -121,7 +122,7 @@ describe('GameOfLife', () => {
           advanceTimers: jest.advanceTimersByTime,
         });
 
-        render(<GameOfLife />);
+        render(<GameOfLife />, { wrapper: BrowserRouter });
 
         const gameState1 = JSON.parse(
           screen.getByTestId('game-data').textContent!
@@ -155,7 +156,7 @@ describe('GameOfLife', () => {
     describe('Grid Manipulators', () => {
       describe('Cell Size', () => {
         it('starts with default size', () => {
-          render(<GameOfLife />);
+          render(<GameOfLife />, { wrapper: BrowserRouter });
           const cellSize = parseInt(
             screen.getByTestId('cell-size').textContent!
           );
@@ -167,7 +168,7 @@ describe('GameOfLife', () => {
             advanceTimers: jest.advanceTimersByTime,
           });
 
-          render(<GameOfLife />);
+          render(<GameOfLife />, { wrapper: BrowserRouter });
 
           const sliderRail = screen.getByTestId('cell-size-rail');
 
@@ -196,7 +197,7 @@ describe('GameOfLife', () => {
 
       describe('Update Speed', () => {
         it('starts with default speed', () => {
-          render(<GameOfLife />);
+          render(<GameOfLife />, { wrapper: BrowserRouter });
           const cellSize = parseInt(
             screen.getByTestId('update-speed').textContent!
           );
@@ -208,7 +209,7 @@ describe('GameOfLife', () => {
             advanceTimers: jest.advanceTimersByTime,
           });
 
-          render(<GameOfLife />);
+          render(<GameOfLife />, { wrapper: BrowserRouter });
 
           const sliderRail = screen.getByTestId('update-speed-rail');
 

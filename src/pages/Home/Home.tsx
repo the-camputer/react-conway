@@ -24,7 +24,7 @@ const Home: React.FC = (props: any) => {
         >
           Game of Life
         </Typography>
-        <Link to={'/game'}>
+        <Link to={'/game'} data-testid='play-link'>
           <Button size='lg'>Play</Button>
         </Link>
       </Stack>

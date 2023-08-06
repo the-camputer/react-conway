@@ -4,7 +4,7 @@ import GameOfLife from './pages/Game';
 import Home from './pages/Home';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-function App() {
+const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
@@ -15,14 +15,18 @@ function App() {
       element: <GameOfLife />,
     },
   ]);
+  return <RouterProvider router={router} />;
+};
 
+function WrappedApp() {
   return (
     <div className='App'>
       <CssVarsProvider defaultMode='light'>
-        <RouterProvider router={router} />
+        <App />
       </CssVarsProvider>
     </div>
   );
 }
 
-export default App;
+export default WrappedApp;
+export { App };
