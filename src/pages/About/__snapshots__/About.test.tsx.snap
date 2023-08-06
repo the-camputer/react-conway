@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About renders without crashing 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="background"
+      >
+        <div
+          class="MuiStack-root css-4qgjc5-JoyStack-root"
+        >
+          <div
+            class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-col2u6-JoySheet-root"
+            data-testid="game-explanation"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+            >
+              From Wikipedia:
+            </p>
+            <br />
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+            >
+              The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, live or dead (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+            </p>
+            <ul
+              class="MuiList-root MuiList-vertical MuiList-variantPlain MuiList-colorNeutral MuiList-sizeMd css-1y9e9ot-JoyList-root"
+            >
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-4sda65-JoyListItem-root"
+                data-first-child=""
+              >
+                Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+              </li>
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+              >
+                Any live cell with two or three live neighbours lives on to the next generation.
+              </li>
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+              >
+                Any live cell with more than three live neighbours dies, as if by overpopulation.
+              </li>
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+              >
+                Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+              </li>
+            </ul>
+            <br />
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+            >
+              These rules, which compare the behaviour of the automaton to real life, can be condensed into the following:
+            </p>
+            <ul
+              class="MuiList-root MuiList-vertical MuiList-variantPlain MuiList-colorNeutral MuiList-sizeMd css-1y9e9ot-JoyList-root"
+            >
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-4sda65-JoyListItem-root"
+                data-first-child=""
+              >
+                Any live cell with two or three live neighbours survives.
+              </li>
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+              >
+                Any dead cell with three live neighbours becomes a live cell.
+              </li>
+              <li
+                class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+              >
+                All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+              </li>
+            </ul>
+            <br />
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+            >
+              The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed, live or dead; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick
+            </p>
+          </div>
+          <a
+            data-testid="home-link"
+            href="/"
+          >
+            <button
+              class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+              type="button"
+            >
+              <span
+                class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="HomeIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                  />
+                </svg>
+              </span>
+              Home
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="background"
+    >
+      <div
+        class="MuiStack-root css-4qgjc5-JoyStack-root"
+      >
+        <div
+          class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-col2u6-JoySheet-root"
+          data-testid="game-explanation"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+          >
+            From Wikipedia:
+          </p>
+          <br />
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+          >
+            The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, live or dead (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+          </p>
+          <ul
+            class="MuiList-root MuiList-vertical MuiList-variantPlain MuiList-colorNeutral MuiList-sizeMd css-1y9e9ot-JoyList-root"
+          >
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-4sda65-JoyListItem-root"
+              data-first-child=""
+            >
+              Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+            </li>
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+            >
+              Any live cell with two or three live neighbours lives on to the next generation.
+            </li>
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+            >
+              Any live cell with more than three live neighbours dies, as if by overpopulation.
+            </li>
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+            >
+              Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+            </li>
+          </ul>
+          <br />
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+          >
+            These rules, which compare the behaviour of the automaton to real life, can be condensed into the following:
+          </p>
+          <ul
+            class="MuiList-root MuiList-vertical MuiList-variantPlain MuiList-colorNeutral MuiList-sizeMd css-1y9e9ot-JoyList-root"
+          >
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-4sda65-JoyListItem-root"
+              data-first-child=""
+            >
+              Any live cell with two or three live neighbours survives.
+            </li>
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+            >
+              Any dead cell with three live neighbours becomes a live cell.
+            </li>
+            <li
+              class="MuiListItem-root MuiListItem-colorNeutral MuiListItem-variantPlain css-1ki4kbp-JoyListItem-root"
+            >
+              All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+            </li>
+          </ul>
+          <br />
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-1rshf8f-JoyTypography-root"
+          >
+            The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed, live or dead; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick
+          </p>
+        </div>
+        <a
+          data-testid="home-link"
+          href="/"
+        >
+          <button
+            class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+            type="button"
+          >
+            <span
+              class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="HomeIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                />
+              </svg>
+            </span>
+            Home
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

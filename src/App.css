@@ -45,3 +45,9 @@
 #control-center {
   height: 10vh;
 }
+
+.background {
+  background-image: url('../public/background.gif');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}

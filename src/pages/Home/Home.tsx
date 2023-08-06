@@ -1,18 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Stack, Button, Typography } from '@mui/joy';
-import styled from 'styled-components';
-
-const Background = styled.div`
-  background-image: url('background.gif');
-  background-origin: center;
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh;
-`;
+import { Info, PlayArrow } from '@mui/icons-material';
 
 const Home: React.FC = (props: any) => {
   return (
-    <Background>
+    <div className='background'>
       <Stack height='100vh' justifyContent='space-around'>
         <Typography
           level='h1'
@@ -24,11 +17,20 @@ const Home: React.FC = (props: any) => {
         >
           Game of Life
         </Typography>
-        <Link to={'/game'} data-testid='play-link'>
-          <Button size='lg'>Play</Button>
-        </Link>
+        <Stack spacing={2}>
+          <Link to={'/game'} data-testid='play-link'>
+            <Button size='lg' startDecorator={<PlayArrow />}>
+              Play
+            </Button>
+          </Link>
+          <Link to={'/about'} data-testid='about-link'>
+            <Button size='lg' startDecorator={<Info />}>
+              About
+            </Button>
+          </Link>
+        </Stack>
       </Stack>
-    </Background>
+    </div>
   );
 };
 

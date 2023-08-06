@@ -34,9 +34,31 @@ describe('routing', () => {
     expect(screen.getByTestId('play-game')).toBeInTheDocument();
   });
 
-  test('Clicking home button from Game page routes to the homne page', async () => {
+  test('Clicking home button from Game page routes to the home page', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     window.history.pushState({}, 'Game Route', '/game');
+    render(<App />);
+    await act(async () => {
+      await user.click(screen.getByTestId('home-link'));
+    });
+
+    expect(screen.getByTestId('play-link')).toBeInTheDocument();
+  });
+
+  test('Clicking about button from Home page routes to the about page', async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+    window.history.pushState({}, 'Default Route', '/');
+    render(<App />);
+    await act(async () => {
+      await user.click(screen.getByTestId('about-link'));
+    });
+
+    expect(screen.getByTestId('game-explanation')).toBeInTheDocument();
+  });
+
+  test('Clicking home button from the About page routes to the home page', async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+    window.history.pushState({}, 'About Page', '/about');
     render(<App />);
     await act(async () => {
       await user.click(screen.getByTestId('home-link'));
