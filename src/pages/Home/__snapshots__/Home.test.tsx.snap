@@ -6,7 +6,7 @@ exports[`Home renders without crashing 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="sc-bcHOTY jcODoF"
+        class="background"
       >
         <div
           class="MuiStack-root css-1iatv4s-JoyStack-root"
@@ -16,24 +16,69 @@ exports[`Home renders without crashing 1`] = `
           >
             Game of Life
           </h1>
-          <a
-            data-testid="play-link"
-            href="/game"
+          <div
+            class="MuiStack-root css-hrqung-JoyStack-root"
           >
-            <button
-              class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
-              type="button"
+            <a
+              data-testid="play-link"
+              href="/game"
             >
-              Play
-            </button>
-          </a>
+              <button
+                class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+                type="button"
+              >
+                <span
+                  class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PlayArrowIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8 5v14l11-7z"
+                    />
+                  </svg>
+                </span>
+                Play
+              </button>
+            </a>
+            <a
+              data-testid="about-link"
+              href="/about"
+            >
+              <button
+                class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+                type="button"
+              >
+                <span
+                  class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                </span>
+                About
+              </button>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="sc-bcHOTY jcODoF"
+      class="background"
     >
       <div
         class="MuiStack-root css-1iatv4s-JoyStack-root"
@@ -43,17 +88,62 @@ exports[`Home renders without crashing 1`] = `
         >
           Game of Life
         </h1>
-        <a
-          data-testid="play-link"
-          href="/game"
+        <div
+          class="MuiStack-root css-hrqung-JoyStack-root"
         >
-          <button
-            class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
-            type="button"
+          <a
+            data-testid="play-link"
+            href="/game"
           >
-            Play
-          </button>
-        </a>
+            <button
+              class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+              type="button"
+            >
+              <span
+                class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="PlayArrowIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8 5v14l11-7z"
+                  />
+                </svg>
+              </span>
+              Play
+            </button>
+          </a>
+          <a
+            data-testid="about-link"
+            href="/about"
+          >
+            <button
+              class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+              type="button"
+            >
+              <span
+                class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="InfoIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                  />
+                </svg>
+              </span>
+              About
+            </button>
+          </a>
+        </div>
       </div>
     </div>
   </div>,
