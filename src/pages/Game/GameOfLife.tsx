@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import {
   Stack,
   Typography,
-  Box,
   Button,
   Slider,
+  Sheet,
   FormControl,
   FormLabel,
+  IconButton,
 } from '@mui/joy';
-import { Clear, Replay, PlayArrow, Pause } from '@mui/icons-material';
+import { Clear, Replay, PlayArrow, Pause, Home } from '@mui/icons-material';
 import GoLField from './GoLField';
 import { Cell, calculateNextState } from './GameOfLifeService';
+import { Link } from 'react-router-dom';
 
 const env = process.env.NODE_ENV;
 
@@ -98,9 +100,27 @@ const GameOfLife: React.FC = (props) => {
 
   return (
     <Stack spacing={0} justifyContent='center'>
-      <Typography level='display1' variant='solid' id='title'>
-        Conway's Game of Life
-      </Typography>
+      <Sheet variant='solid'>
+        <Stack direction='row' justifyContent='center' alignItems='center'>
+          <Link to='/' style={{ marginLeft: '10px' }} data-testid='home-link'>
+            <IconButton variant='solid'>
+              <Home />
+            </IconButton>
+          </Link>
+
+          <Typography
+            level='h1'
+            sx={{
+              color: 'white',
+              WebkitTextStroke: '1px black',
+              fontSize: '4em',
+              flexGrow: 2,
+            }}
+          >
+            Conway's Game of Life
+          </Typography>
+        </Stack>
+      </Sheet>
       <GoLField
         cellSize={cellSize}
         livingCells={gameState}
@@ -109,7 +129,7 @@ const GameOfLife: React.FC = (props) => {
       {env === 'test' && (
         <div data-testid='game-data'>{JSON.stringify(gameState)}</div>
       )}
-      <Box
+      <Sheet
         sx={{
           display: 'flex',
           gap: 2,
@@ -158,8 +178,8 @@ const GameOfLife: React.FC = (props) => {
             Reset
           </Button>
         )}
-      </Box>
-      <Box
+      </Sheet>
+      <Sheet
         sx={{
           display: 'flex',
           gap: 10,
@@ -208,7 +228,7 @@ const GameOfLife: React.FC = (props) => {
             sx={{ width: 200 }}
           />
         </FormControl>
-      </Box>
+      </Sheet>
     </Stack>
   );
 };
