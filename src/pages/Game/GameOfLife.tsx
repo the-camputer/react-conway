@@ -94,6 +94,41 @@ const GameOfLife: React.FC = (props) => {
     files ? setFileImport(files[0]) : setFileImport(null);
   };
 
+  const importFile = () => {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        let text = reader.result;
+        if (!text) {
+          throw new Error('Text not parsed');
+        } else if (text instanceof ArrayBuffer) {
+          text = new TextDecoder().decode(text);
+        }
+        const seedJSON = JSON.parse(text!);
+        if (seedJSON instanceof Array && seedJSON.length > 0) {
+          const allAreCells: boolean = seedJSON.reduce((prev, curr) => {
+            return prev && 'x' in curr && 'y' in curr;
+          }, true);
+          if (allAreCells) {
+            setGameState(seedJSON);
+            setFileImport(null);
+            SetImportModalOpen(false);
+          } else {
+            throw new Error(
+              'Not all objects in list are of the form {x: number, y: number}'
+            );
+          }
+        }
+      } catch (err: any) {
+        console.log(err);
+        alert(`Unable to load provided JSON file: ${err}`);
+        setFileImport(null);
+      }
+    };
+
+    reader.readAsText(fileImport!);
+  };
+
   const scaleCell = (
     _event: Event,
     value: number | number[],
@@ -234,7 +269,12 @@ const GameOfLife: React.FC = (props) => {
             >
               <Button startDecorator={<AttachFile />} component='label'>
                 {fileImport ? fileImport.name : 'Select File'}
-                <input type='file' hidden onChange={updateImportFile} />
+                <input
+                  type='file'
+                  hidden
+                  onChange={updateImportFile}
+                  accept='.json'
+                />
               </Button>
               <IconButton onClick={() => setFileImport(null)}>
                 <Clear />
@@ -256,7 +296,13 @@ const GameOfLife: React.FC = (props) => {
               >
                 Cancel
               </Button>
-              <Button color='primary'>Import</Button>
+              <Button
+                color='primary'
+                onClick={importFile}
+                disabled={fileImport == null}
+              >
+                Import
+              </Button>
             </ButtonGroup>
           </Sheet>
         </Modal>
