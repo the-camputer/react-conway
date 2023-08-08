@@ -111,6 +111,9 @@ const GameOfLife: React.FC = (props) => {
           }, true);
           if (allAreCells) {
             setGameState(seedJSON);
+            setStartingGameState(seedJSON);
+            setTick(0);
+            setPaused(true);
             setFileImport(null);
             SetImportModalOpen(false);
           } else {
@@ -127,6 +130,20 @@ const GameOfLife: React.FC = (props) => {
     };
 
     reader.readAsText(fileImport!);
+  };
+
+  const exportFile = () => {
+    const data = JSON.stringify(startingGameState, null, 2);
+    const uri =
+      'data:application/json;charset=utf-8,' + encodeURIComponent(data);
+
+    const link = document.createElement('a');
+    link.setAttribute('href', uri);
+    link.setAttribute('filename', 'conway-seed.json');
+    link.style.display = 'none';
+    document.body.append(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const scaleCell = (
@@ -238,7 +255,9 @@ const GameOfLife: React.FC = (props) => {
         >
           Import
         </Button>
-        <Button startDecorator={<FileDownload />}>Export</Button>
+        <Button startDecorator={<FileDownload />} onClick={exportFile}>
+          Export
+        </Button>
         <Modal
           open={importModalOpen}
           onClose={() => SetImportModalOpen(false)}
