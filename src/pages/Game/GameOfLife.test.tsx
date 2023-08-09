@@ -2,6 +2,9 @@ import userEvent from '@testing-library/user-event';
 import GameOfLife from './GameOfLife';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { enableFetchMocks } from 'jest-fetch-mock';
+
+enableFetchMocks();
 
 global.innerWidth = 1920;
 global.innerHeight = 640;
@@ -318,6 +321,33 @@ describe('GameOfLife', () => {
           );
 
           expect(gameState).toEqual(testData);
+        });
+      });
+
+      describe('export', () => {
+        it('exports the initial game state as json', async () => {
+          const link = {
+            href: '',
+            download: '',
+            click: jest.fn(),
+          };
+
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+
+          render(<GameOfLife />, { wrapper: BrowserRouter });
+
+          // @ts-ignore
+          jest.spyOn(document, 'createElement').mockImplementation(() => link);
+
+          await act(async () => {
+            await user.click(screen.getByTestId('export-button'));
+          });
+
+          expect(link.href).toMatch(/^data:application\/json;charset=utf-8/);
+          expect(link.download).toBe('conway-seed.json');
+          expect(link.click).toHaveBeenCalledTimes(1);
         });
       });
     });
