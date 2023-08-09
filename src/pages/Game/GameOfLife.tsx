@@ -94,42 +94,35 @@ const GameOfLife: React.FC = (props) => {
     files ? setFileImport(files[0]) : setFileImport(null);
   };
 
-  const importFile = () => {
-    const reader = new FileReader();
-    reader.onload = async () => {
-      try {
-        let text = reader.result;
-        if (!text) {
-          throw new Error('Text not parsed');
-        } else if (text instanceof ArrayBuffer) {
-          text = new TextDecoder().decode(text);
-        }
-        const seedJSON = JSON.parse(text!);
-        if (seedJSON instanceof Array && seedJSON.length > 0) {
-          const allAreCells: boolean = seedJSON.reduce((prev, curr) => {
-            return prev && 'x' in curr && 'y' in curr;
-          }, true);
-          if (allAreCells) {
-            setGameState(seedJSON);
-            setStartingGameState(seedJSON);
-            setTick(0);
-            setPaused(true);
-            setFileImport(null);
-            SetImportModalOpen(false);
-          } else {
-            throw new Error(
-              'Not all objects in list are of the form {x: number, y: number}'
-            );
-          }
-        }
-      } catch (err: any) {
-        console.log(err);
-        alert(`Unable to load provided JSON file: ${err}`);
-        setFileImport(null);
+  const importFile = async () => {
+    try {
+      let text = await fileImport!.text();
+      if (!text) {
+        throw new Error('Text not parsed');
       }
-    };
-
-    reader.readAsText(fileImport!);
+      const seedJSON = JSON.parse(text!);
+      if (seedJSON instanceof Array && seedJSON.length > 0) {
+        const allAreCells: boolean = seedJSON.reduce((prev, curr) => {
+          return prev && 'x' in curr && 'y' in curr;
+        }, true);
+        if (allAreCells) {
+          setGameState(seedJSON);
+          setStartingGameState(seedJSON);
+          setTick(0);
+          setPaused(true);
+          setFileImport(null);
+          SetImportModalOpen(false);
+        } else {
+          throw new Error(
+            'Not all objects in list are of the form {x: number, y: number}'
+          );
+        }
+      }
+    } catch (err) {
+      console.log(err);
+      alert(`Unable to load provided JSON file: ${err}`);
+      setFileImport(null);
+    }
   };
 
   const exportFile = () => {
@@ -252,10 +245,15 @@ const GameOfLife: React.FC = (props) => {
         <Button
           startDecorator={<FileUpload />}
           onClick={() => SetImportModalOpen(true)}
+          data-testid='open-import'
         >
           Import
         </Button>
-        <Button startDecorator={<FileDownload />} onClick={exportFile}>
+        <Button
+          startDecorator={<FileDownload />}
+          onClick={exportFile}
+          data-testid='export-button'
+        >
           Export
         </Button>
         <Modal
@@ -286,11 +284,16 @@ const GameOfLife: React.FC = (props) => {
               color='primary'
               sx={{ display: 'flex', justifyContent: 'center' }}
             >
-              <Button startDecorator={<AttachFile />} component='label'>
+              <Button
+                startDecorator={<AttachFile />}
+                component='label'
+                data-testid='import-select-label'
+              >
                 {fileImport ? fileImport.name : 'Select File'}
                 <input
                   type='file'
                   hidden
+                  data-testid='import-select'
                   onChange={updateImportFile}
                   accept='.json'
                 />
@@ -319,6 +322,7 @@ const GameOfLife: React.FC = (props) => {
                 color='primary'
                 onClick={importFile}
                 disabled={fileImport == null}
+                data-testid='import-button'
               >
                 Import
               </Button>

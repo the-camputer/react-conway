@@ -59,7 +59,8 @@ exports[`GameOfLife renders game without crashing 1`] = `
           [{"x":15,"y":2},{"x":16,"y":3},{"x":14,"y":4},{"x":15,"y":4},{"x":16,"y":4}]
         </div>
         <div
-          class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-1bqfkf2-JoySheet-root"
+          class="MuiButtonGroup-root MuiButtonGroup-horizontal MuiButtonGroup-variantSolid MuiButtonGroup-colorPrimary MuiButtonGroup-sizeLg css-1wqtnhg-JoyButtonGroup-root"
+          role="group"
         >
           <button
             class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
@@ -104,6 +105,54 @@ exports[`GameOfLife renders game without crashing 1`] = `
               </svg>
             </span>
             Clear
+          </button>
+          <span
+            class="MuiDivider-root MuiDivider-vertical MuiDivider-insetContext css-uaad1n-JoyDivider-root"
+            role="presentation"
+          />
+          <button
+            class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+            data-testid="open-import"
+            type="button"
+          >
+            <span
+              class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="FileUploadIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"
+                />
+              </svg>
+            </span>
+            Import
+          </button>
+          <button
+            class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+            data-testid="export-button"
+            type="button"
+          >
+            <span
+              class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="FileDownloadIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+                />
+              </svg>
+            </span>
+            Export
           </button>
         </div>
         <div
@@ -266,7 +315,8 @@ exports[`GameOfLife renders game without crashing 1`] = `
         [{"x":15,"y":2},{"x":16,"y":3},{"x":14,"y":4},{"x":15,"y":4},{"x":16,"y":4}]
       </div>
       <div
-        class="MuiSheet-root MuiSheet-variantPlain MuiSheet-colorNeutral css-1bqfkf2-JoySheet-root"
+        class="MuiButtonGroup-root MuiButtonGroup-horizontal MuiButtonGroup-variantSolid MuiButtonGroup-colorPrimary MuiButtonGroup-sizeLg css-1wqtnhg-JoyButtonGroup-root"
+        role="group"
       >
         <button
           class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
@@ -311,6 +361,54 @@ exports[`GameOfLife renders game without crashing 1`] = `
             </svg>
           </span>
           Clear
+        </button>
+        <span
+          class="MuiDivider-root MuiDivider-vertical MuiDivider-insetContext css-uaad1n-JoyDivider-root"
+          role="presentation"
+        />
+        <button
+          class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+          data-testid="open-import"
+          type="button"
+        >
+          <span
+            class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FileUploadIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"
+              />
+            </svg>
+          </span>
+          Import
+        </button>
+        <button
+          class="MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeLg css-1mhx1qt-JoyButton-root"
+          data-testid="export-button"
+          type="button"
+        >
+          <span
+            class="MuiButton-startDecorator css-187ulk2-JoyButton-startDecorator"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FileDownloadIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+              />
+            </svg>
+          </span>
+          Export
         </button>
       </div>
       <div
