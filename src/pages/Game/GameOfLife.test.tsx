@@ -1,7 +1,10 @@
 import userEvent from '@testing-library/user-event';
 import GameOfLife from './GameOfLife';
-import { render, act, screen } from '@testing-library/react';
+import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { enableFetchMocks } from 'jest-fetch-mock';
+
+enableFetchMocks();
 
 global.innerWidth = 1920;
 global.innerHeight = 640;
@@ -233,6 +236,118 @@ describe('GameOfLife', () => {
           );
 
           expect(newCellSize).toBeGreaterThan(originalCellSize);
+        });
+      });
+    });
+    describe('Import & Export', () => {
+      describe('import', () => {
+        it('button opens a modal to select file when clicked', async () => {
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+          render(<GameOfLife />, { wrapper: BrowserRouter });
+
+          await act(async () => {
+            await user.click(screen.getByTestId('open-import'));
+          });
+
+          expect(screen.getByTestId('import-select')).toBeInTheDocument();
+        });
+
+        it('file select allows file upload', async () => {
+          const testData = [
+            { x: 2, y: 3 },
+            { x: 4, y: 12 },
+          ];
+          const str = JSON.stringify(testData);
+          const blob = new Blob([str]);
+          const file = new File([blob], 'test.json', {
+            type: 'application/json',
+          });
+
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+          render(<GameOfLife />, { wrapper: BrowserRouter });
+
+          await act(async () => {
+            await user.click(screen.getByTestId('open-import'));
+          });
+
+          user.upload(screen.getByTestId('import-select'), file);
+          await waitFor(async () => {
+            const importButton = screen.getByTestId('import-button');
+            expect(importButton.getAttribute('disabled')).toBeNull();
+          });
+
+          expect(
+            screen.getByTestId('import-select-label').textContent
+          ).toContain('test.json');
+        });
+
+        it('sets the game configuration based on the uploaded file', async () => {
+          const testData = [
+            { x: 2, y: 3 },
+            { x: 4, y: 12 },
+          ];
+          const str = JSON.stringify(testData);
+          const blob = new Blob([str]);
+          const file = new File([blob], 'test.json', {
+            type: 'application/json',
+          });
+          File.prototype.text = jest.fn().mockResolvedValueOnce(str);
+
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+          render(<GameOfLife />, { wrapper: BrowserRouter });
+
+          await act(async () => {
+            await user.click(screen.getByTestId('open-import'));
+          });
+
+          user.upload(screen.getByTestId('import-select'), file);
+          await waitFor(async () => {
+            const importButton = screen.getByTestId('import-button');
+            expect(importButton.getAttribute('disabled')).toBeNull();
+          });
+
+          await act(
+            async () => await user.click(screen.getByTestId('import-button'))
+          );
+
+          let gameState = JSON.parse(
+            screen.getByTestId('game-data').textContent!
+          );
+
+          expect(gameState).toEqual(testData);
+        });
+      });
+
+      describe('export', () => {
+        it('exports the initial game state as json', async () => {
+          const link = {
+            href: '',
+            download: '',
+            click: jest.fn(),
+          };
+
+          const user = userEvent.setup({
+            advanceTimers: jest.advanceTimersByTime,
+          });
+
+          render(<GameOfLife />, { wrapper: BrowserRouter });
+
+          // @ts-ignore
+          jest.spyOn(document, 'createElement').mockImplementation(() => link);
+
+          await act(async () => {
+            await user.click(screen.getByTestId('export-button'));
+          });
+
+          expect(link.href).toMatch(/^data:application\/json;charset=utf-8/);
+          expect(link.download).toBe('conway-seed.json');
+          expect(link.click).toHaveBeenCalledTimes(1);
         });
       });
     });
