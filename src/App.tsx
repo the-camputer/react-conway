@@ -4,6 +4,7 @@ import GameOfLife from './pages/Game';
 import Home from './pages/Home';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import About from './pages/About/About';
+import { GoLProvider } from './pages/Game/GameOfLifeContext';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -13,7 +14,11 @@ const App = () => {
     },
     {
       path: '/game',
-      element: <GameOfLife />,
+      element: (
+        <GoLProvider>
+          <GameOfLife />
+        </GoLProvider>
+      ),
     },
     {
       path: '/about',
