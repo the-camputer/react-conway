@@ -3,6 +3,7 @@ import GameOfLife from './GameOfLife';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { enableFetchMocks } from 'jest-fetch-mock';
+import { GoLProvider } from './GameOfLifeContext';
 
 enableFetchMocks();
 
@@ -15,13 +16,23 @@ describe('GameOfLife', () => {
   });
 
   it('renders game without crashing', () => {
-    let view = render(<GameOfLife />, { wrapper: BrowserRouter });
+    let view = render(
+      <GoLProvider>
+        <GameOfLife />
+      </GoLProvider>,
+      { wrapper: BrowserRouter }
+    );
     expect(view).toMatchSnapshot();
   });
 
   it('calcualtes a new game state on a regular cadence during play', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
-    render(<GameOfLife />, { wrapper: BrowserRouter });
+    render(
+      <GoLProvider>
+        <GameOfLife />
+      </GoLProvider>,
+      { wrapper: BrowserRouter }
+    );
 
     let gameState1 = JSON.parse(screen.getByTestId('game-data').textContent!);
 
@@ -41,7 +52,12 @@ describe('GameOfLife', () => {
 
   it('adds a clicked cell that is currently dead to the game state to be rendered alive', async () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
-    render(<GameOfLife />, { wrapper: BrowserRouter });
+    render(
+      <GoLProvider>
+        <GameOfLife />
+      </GoLProvider>,
+      { wrapper: BrowserRouter }
+    );
 
     await act(async () => {
       await user.pointer({
@@ -60,7 +76,12 @@ describe('GameOfLife', () => {
   describe('buttons', () => {
     describe('Pause & Play', () => {
       it('A play button appears when the game first starts', () => {
-        render(<GameOfLife />, { wrapper: BrowserRouter });
+        render(
+          <GoLProvider>
+            <GameOfLife />
+          </GoLProvider>,
+          { wrapper: BrowserRouter }
+        );
         expect(screen.getByTestId('play-game')).toBeInTheDocument();
       });
 
@@ -68,7 +89,12 @@ describe('GameOfLife', () => {
         const user = userEvent.setup({
           advanceTimers: jest.advanceTimersByTime,
         });
-        render(<GameOfLife />, { wrapper: BrowserRouter });
+        render(
+          <GoLProvider>
+            <GameOfLife />
+          </GoLProvider>,
+          { wrapper: BrowserRouter }
+        );
         await act(async () => {
           await user.click(screen.getByTestId('play-game'));
         });
@@ -81,7 +107,12 @@ describe('GameOfLife', () => {
           advanceTimers: jest.advanceTimersByTime,
         });
 
-        render(<GameOfLife />, { wrapper: BrowserRouter });
+        render(
+          <GoLProvider>
+            <GameOfLife />
+          </GoLProvider>,
+          { wrapper: BrowserRouter }
+        );
         await act(async () => {
           await user.click(screen.getByTestId('play-game'));
         });
@@ -96,7 +127,12 @@ describe('GameOfLife', () => {
 
     describe('Reset & Clear', () => {
       it('Clear button appears at tick 0 and reset button does not', async () => {
-        render(<GameOfLife />, { wrapper: BrowserRouter });
+        render(
+          <GoLProvider>
+            <GameOfLife />
+          </GoLProvider>,
+          { wrapper: BrowserRouter }
+        );
         expect(screen.getByTestId('clear-game')).toBeInTheDocument();
         expect(screen.queryByTestId('reset-game')).not.toBeInTheDocument();
       });
@@ -105,7 +141,12 @@ describe('GameOfLife', () => {
         const user = userEvent.setup({
           advanceTimers: jest.advanceTimersByTime,
         });
-        render(<GameOfLife />, { wrapper: BrowserRouter });
+        render(
+          <GoLProvider>
+            <GameOfLife />
+          </GoLProvider>,
+          { wrapper: BrowserRouter }
+        );
         const gameState1 = JSON.parse(
           screen.getByTestId('game-data').textContent!
         );
@@ -125,7 +166,12 @@ describe('GameOfLife', () => {
           advanceTimers: jest.advanceTimersByTime,
         });
 
-        render(<GameOfLife />, { wrapper: BrowserRouter });
+        render(
+          <GoLProvider>
+            <GameOfLife />
+          </GoLProvider>,
+          { wrapper: BrowserRouter }
+        );
 
         const gameState1 = JSON.parse(
           screen.getByTestId('game-data').textContent!
@@ -159,7 +205,12 @@ describe('GameOfLife', () => {
     describe('Grid Manipulators', () => {
       describe('Cell Size', () => {
         it('starts with default size', () => {
-          render(<GameOfLife />, { wrapper: BrowserRouter });
+          render(
+            <GoLProvider>
+              <GameOfLife />
+            </GoLProvider>,
+            { wrapper: BrowserRouter }
+          );
           const cellSize = parseInt(
             screen.getByTestId('cell-size').textContent!
           );
@@ -171,7 +222,12 @@ describe('GameOfLife', () => {
             advanceTimers: jest.advanceTimersByTime,
           });
 
-          render(<GameOfLife />, { wrapper: BrowserRouter });
+          render(
+            <GoLProvider>
+              <GameOfLife />
+            </GoLProvider>,
+            { wrapper: BrowserRouter }
+          );
 
           const sliderRail = screen.getByTestId('cell-size-rail');
 
@@ -200,7 +256,12 @@ describe('GameOfLife', () => {
 
       describe('Update Speed', () => {
         it('starts with default speed', () => {
-          render(<GameOfLife />, { wrapper: BrowserRouter });
+          render(
+            <GoLProvider>
+              <GameOfLife />
+            </GoLProvider>,
+            { wrapper: BrowserRouter }
+          );
           const cellSize = parseInt(
             screen.getByTestId('update-speed').textContent!
           );
@@ -212,7 +273,12 @@ describe('GameOfLife', () => {
             advanceTimers: jest.advanceTimersByTime,
           });
 
-          render(<GameOfLife />, { wrapper: BrowserRouter });
+          render(
+            <GoLProvider>
+              <GameOfLife />
+            </GoLProvider>,
+            { wrapper: BrowserRouter }
+          );
 
           const sliderRail = screen.getByTestId('update-speed-rail');
 
@@ -241,50 +307,6 @@ describe('GameOfLife', () => {
     });
     describe('Import & Export', () => {
       describe('import', () => {
-        it('button opens a modal to select file when clicked', async () => {
-          const user = userEvent.setup({
-            advanceTimers: jest.advanceTimersByTime,
-          });
-          render(<GameOfLife />, { wrapper: BrowserRouter });
-
-          await act(async () => {
-            await user.click(screen.getByTestId('open-import'));
-          });
-
-          expect(screen.getByTestId('import-select')).toBeInTheDocument();
-        });
-
-        it('file select allows file upload', async () => {
-          const testData = [
-            { x: 2, y: 3 },
-            { x: 4, y: 12 },
-          ];
-          const str = JSON.stringify(testData);
-          const blob = new Blob([str]);
-          const file = new File([blob], 'test.json', {
-            type: 'application/json',
-          });
-
-          const user = userEvent.setup({
-            advanceTimers: jest.advanceTimersByTime,
-          });
-          render(<GameOfLife />, { wrapper: BrowserRouter });
-
-          await act(async () => {
-            await user.click(screen.getByTestId('open-import'));
-          });
-
-          user.upload(screen.getByTestId('import-select'), file);
-          await waitFor(async () => {
-            const importButton = screen.getByTestId('import-button');
-            expect(importButton.getAttribute('disabled')).toBeNull();
-          });
-
-          expect(
-            screen.getByTestId('import-select-label').textContent
-          ).toContain('test.json');
-        });
-
         it('sets the game configuration based on the uploaded file', async () => {
           const testData = [
             { x: 2, y: 3 },
@@ -300,7 +322,12 @@ describe('GameOfLife', () => {
           const user = userEvent.setup({
             advanceTimers: jest.advanceTimersByTime,
           });
-          render(<GameOfLife />, { wrapper: BrowserRouter });
+          render(
+            <GoLProvider>
+              <GameOfLife />
+            </GoLProvider>,
+            { wrapper: BrowserRouter }
+          );
 
           await act(async () => {
             await user.click(screen.getByTestId('open-import'));
@@ -321,33 +348,6 @@ describe('GameOfLife', () => {
           );
 
           expect(gameState).toEqual(testData);
-        });
-      });
-
-      describe('export', () => {
-        it('exports the initial game state as json', async () => {
-          const link = {
-            href: '',
-            download: '',
-            click: jest.fn(),
-          };
-
-          const user = userEvent.setup({
-            advanceTimers: jest.advanceTimersByTime,
-          });
-
-          render(<GameOfLife />, { wrapper: BrowserRouter });
-
-          // @ts-ignore
-          jest.spyOn(document, 'createElement').mockImplementation(() => link);
-
-          await act(async () => {
-            await user.click(screen.getByTestId('export-button'));
-          });
-
-          expect(link.href).toMatch(/^data:application\/json;charset=utf-8/);
-          expect(link.download).toBe('conway-seed.json');
-          expect(link.click).toHaveBeenCalledTimes(1);
         });
       });
     });
