@@ -14,7 +14,7 @@ import {
 import { Clear, Replay, PlayArrow, Pause, Home } from '@mui/icons-material';
 import { calculateNextState } from './GameOfLifeService';
 import { Link } from 'react-router-dom';
-import { GameOfLifeContext, GoLState } from './GameOfLifeContext';
+import { GameOfLifeContext, GoLState } from './Context/GameOfLifeContext';
 import {
   ExportButton,
   ImportButton,

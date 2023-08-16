@@ -4,7 +4,7 @@ import GameOfLife from './pages/Game';
 import Home from './pages/Home';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import About from './pages/About/About';
-import { GoLProvider } from './pages/Game/GameOfLifeContext';
+import { GoLProvider } from './pages/Game/Context/GameOfLifeContext';
 
 const App = () => {
   const router = createBrowserRouter([

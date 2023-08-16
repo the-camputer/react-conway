@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Button } from '@mui/joy';
 import { FileDownload } from '@mui/icons-material';
-import { GameOfLifeContext } from '../../GameOfLifeContext';
+import { GameOfLifeContext } from '../../Context/GameOfLifeContext';
 
 export const ExportButton: React.FC = () => {
   const [startingGameState] = useContext(GameOfLifeContext).startingGameState;

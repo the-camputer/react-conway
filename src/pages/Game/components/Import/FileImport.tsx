@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/joy';
 import { AttachFile, Clear, FileUpload } from '@mui/icons-material';
-import { GameOfLifeContext } from '../../GameOfLifeContext';
+import { GameOfLifeContext } from '../../Context/GameOfLifeContext';
 
 export const ImportButton: React.FC = () => {
   const setImportModalOpen = useContext(GameOfLifeContext).modalOpen[1];

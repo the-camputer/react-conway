@@ -4,7 +4,8 @@ import React, {
   createContext,
   useState,
 } from 'react';
-import { Cell } from './GameOfLifeService';
+import { Cell } from '../GameOfLifeService';
+import examples from './examples.json';
 
 export type GoLState = {
   cell: [number, Dispatch<SetStateAction<number>>];
@@ -30,13 +31,7 @@ type GoLProviderProps = {
   children: any;
 };
 
-const defaultStartingGameState: Cell[] = [
-  { x: 15, y: 2 },
-  { x: 16, y: 3 },
-  { x: 14, y: 4 },
-  { x: 15, y: 4 },
-  { x: 16, y: 4 },
-];
+const defaultStartingGameState: Cell[] = examples.glider.data;
 
 export const GoLProvider = ({ children }: GoLProviderProps) => {
   const cell = useState(40);

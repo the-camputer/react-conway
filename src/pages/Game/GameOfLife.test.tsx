@@ -3,7 +3,7 @@ import GameOfLife from './GameOfLife';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { enableFetchMocks } from 'jest-fetch-mock';
-import { GoLProvider } from './GameOfLifeContext';
+import { GoLProvider } from './Context/GameOfLifeContext';
 
 enableFetchMocks();
 

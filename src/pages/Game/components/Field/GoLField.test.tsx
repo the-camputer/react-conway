@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import { GoLField } from './GoLField';
 import { calculateGrid } from '../../GameOfLifeService';
-import { GameOfLifeContext } from '../../GameOfLifeContext';
+import { GameOfLifeContext } from '../../Context/GameOfLifeContext';
 
 jest.mock('../../GameOfLifeService', () => ({
   calculateGrid: jest.fn(),
