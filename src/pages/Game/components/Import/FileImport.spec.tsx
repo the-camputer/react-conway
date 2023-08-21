@@ -1,7 +1,7 @@
 import { ImportButton, ImportModal } from './FileImport';
 import userEvent from '@testing-library/user-event';
 import { render, act, screen, waitFor } from '@testing-library/react';
-import { GoLProvider } from '../../GameOfLifeContext';
+import { GoLProvider } from '../../Context/GameOfLifeContext';
 
 describe('Import', () => {
   beforeEach(() => {

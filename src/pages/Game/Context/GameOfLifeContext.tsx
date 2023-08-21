@@ -4,15 +4,18 @@ import React, {
   createContext,
   useState,
 } from 'react';
-import { Cell } from './GameOfLifeService';
+import { Cell } from '../GameOfLifeService';
+import examples from './examples.json';
 
 export type GoLState = {
   cell: [number, Dispatch<SetStateAction<number>>];
   gameState: [Cell[], Dispatch<SetStateAction<Cell[]>>];
   startingGameState: [Cell[], Dispatch<SetStateAction<Cell[]>>];
   tick: [number, Dispatch<SetStateAction<number>>];
-  modalOpen: [boolean, Dispatch<SetStateAction<boolean>>];
+  importModalOpen: [boolean, Dispatch<SetStateAction<boolean>>];
   fileImport: [File | null, Dispatch<SetStateAction<File | null>>];
+  examples: object;
+  examplesModalOpen: [boolean, Dispatch<SetStateAction<boolean>>];
   toggleCell: (clicked: Cell) => void;
 };
 
@@ -21,30 +24,28 @@ export const GameOfLifeContext = createContext<GoLState>({
   gameState: [[], () => {}],
   startingGameState: [[], () => {}],
   tick: [0, () => {}],
-  modalOpen: [false, () => {}],
+  importModalOpen: [false, () => {}],
   fileImport: [null, () => {}],
+  examples: {},
+  examplesModalOpen: [false, () => {}],
   toggleCell: () => {},
 });
 
 type GoLProviderProps = {
   children: any;
+  startingData?: Cell[];
 };
 
-const defaultStartingGameState: Cell[] = [
-  { x: 15, y: 2 },
-  { x: 16, y: 3 },
-  { x: 14, y: 4 },
-  { x: 15, y: 4 },
-  { x: 16, y: 4 },
-];
+const defaultStartingGameState: Cell[] = examples.glider.data;
 
-export const GoLProvider = ({ children }: GoLProviderProps) => {
+export const GoLProvider = ({ children, startingData }: GoLProviderProps) => {
   const cell = useState(40);
-  const gameState = useState(defaultStartingGameState);
-  const startingGameState = useState(defaultStartingGameState);
+  const gameState = useState(startingData ?? defaultStartingGameState);
+  const startingGameState = useState(startingData ?? defaultStartingGameState);
   const tick = useState(0);
-  const modalOpen = useState(false);
+  const importModalOpen = useState(false);
   const fileImport = useState<File | null>(null);
+  const examplesModalOpen = useState(false);
 
   const toggleCell = (clicked: Cell) => {
     const [state, setState] = gameState;
@@ -62,8 +63,10 @@ export const GoLProvider = ({ children }: GoLProviderProps) => {
     gameState,
     startingGameState,
     tick,
-    modalOpen,
+    importModalOpen,
     fileImport,
+    examples,
+    examplesModalOpen,
     toggleCell,
   };
   return (

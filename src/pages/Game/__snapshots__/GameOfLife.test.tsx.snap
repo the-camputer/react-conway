@@ -41,6 +41,27 @@ exports[`GameOfLife renders game without crashing 1`] = `
             >
               Conway's Game of Life
             </h1>
+            <div
+              style="margin-right: 10px;"
+            >
+              <button
+                class="MuiIconButton-root MuiIconButton-variantSolid MuiIconButton-colorPrimary MuiIconButton-sizeMd css-1u75bwp-JoyIconButton-root"
+                data-testid="examples-link"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="BookmarkOutlinedIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         <div
@@ -297,6 +318,27 @@ exports[`GameOfLife renders game without crashing 1`] = `
           >
             Conway's Game of Life
           </h1>
+          <div
+            style="margin-right: 10px;"
+          >
+            <button
+              class="MuiIconButton-root MuiIconButton-variantSolid MuiIconButton-colorPrimary MuiIconButton-sizeMd css-1u75bwp-JoyIconButton-root"
+              data-testid="examples-link"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="BookmarkOutlinedIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
       <div

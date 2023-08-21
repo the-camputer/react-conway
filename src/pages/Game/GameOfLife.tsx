@@ -13,14 +13,18 @@ import {
 } from '@mui/joy';
 import { Clear, Replay, PlayArrow, Pause, Home } from '@mui/icons-material';
 import { calculateNextState } from './GameOfLifeService';
-import { Link } from 'react-router-dom';
-import { GameOfLifeContext, GoLState } from './GameOfLifeContext';
+import { Link, useLoaderData } from 'react-router-dom';
+import { GameOfLifeContext, GoLState } from './Context/GameOfLifeContext';
+
 import {
   ExportButton,
   ImportButton,
   ImportModal,
   GoLField,
+  ExamplesModalButton,
+  ExamplesModal,
 } from './components';
+import { Cell } from './GameOfLifeService';
 
 const env = process.env.NODE_ENV;
 
@@ -36,6 +40,14 @@ const GameOfLife: React.FC = () => {
 
   const [paused, setPaused] = useState<boolean>(true);
   const [updateSpeed, setUpdateSpeed] = useState<number>(defaultUpdateSpeed);
+
+  const importedStartingState = useLoaderData() as { data: Cell[] };
+  useEffect(() => {
+    if (importedStartingState?.data) {
+      setStartingGameState(importedStartingState.data);
+      setGameState(importedStartingState.data);
+    }
+  }, [setStartingGameState, importedStartingState, setGameState]);
 
   useEffect(() => {
     if (tick === 0) {
@@ -109,8 +121,13 @@ const GameOfLife: React.FC = () => {
           >
             Conway's Game of Life
           </Typography>
+
+          <div style={{ marginRight: '10px' }}>
+            <ExamplesModalButton />
+          </div>
         </Stack>
       </Sheet>
+      <ExamplesModal />
       <GoLField />
       {env === 'test' && (
         <div data-testid='game-data'>{JSON.stringify(gameState)}</div>

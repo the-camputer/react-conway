@@ -3,12 +3,17 @@ import GameOfLife from './GameOfLife';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { enableFetchMocks } from 'jest-fetch-mock';
-import { GoLProvider } from './GameOfLifeContext';
+import { GoLProvider } from './Context/GameOfLifeContext';
 
 enableFetchMocks();
 
 global.innerWidth = 1920;
 global.innerHeight = 640;
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLoaderData: jest.fn(),
+}));
 
 describe('GameOfLife', () => {
   beforeEach(() => {

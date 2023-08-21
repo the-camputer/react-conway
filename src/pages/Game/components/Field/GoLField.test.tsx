@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import { GoLField } from './GoLField';
 import { calculateGrid } from '../../GameOfLifeService';
-import { GameOfLifeContext } from '../../GameOfLifeContext';
+import { GameOfLifeContext } from '../../Context/GameOfLifeContext';
 
 jest.mock('../../GameOfLifeService', () => ({
   calculateGrid: jest.fn(),
@@ -30,8 +30,10 @@ describe('GolField', () => {
           gameState: [[], jest.fn()],
           startingGameState: [[], jest.fn()],
           tick: [0, jest.fn()],
-          modalOpen: [false, jest.fn()],
+          importModalOpen: [false, jest.fn()],
           fileImport: [null, jest.fn()],
+          examplesModalOpen: [false, jest.fn()],
+          examples: {},
           toggleCell: jest.fn(),
         }}
       >

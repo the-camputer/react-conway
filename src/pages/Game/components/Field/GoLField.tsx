@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { styled } from 'styled-components';
 import { calculateGrid, Cell } from '../../GameOfLifeService';
-import { GameOfLifeContext, GoLState } from '../../GameOfLifeContext';
+import { GameOfLifeContext, GoLState } from '../../Context/GameOfLifeContext';
 
 const Canvas = styled.canvas`
   background-color: #fff;
