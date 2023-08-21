@@ -12,7 +12,7 @@ import { AttachFile, Clear, FileUpload } from '@mui/icons-material';
 import { GameOfLifeContext } from '../../Context/GameOfLifeContext';
 
 export const ImportButton: React.FC = () => {
-  const setImportModalOpen = useContext(GameOfLifeContext).modalOpen[1];
+  const setImportModalOpen = useContext(GameOfLifeContext).importModalOpen[1];
   return (
     <Button
       startDecorator={<FileUpload />}
@@ -26,7 +26,7 @@ export const ImportButton: React.FC = () => {
 
 export const ImportModal: React.FC = () => {
   const context = useContext(GameOfLifeContext);
-  const [importModalOpen, setImportModalOpen] = context.modalOpen;
+  const [importModalOpen, setImportModalOpen] = context.importModalOpen;
   const [fileImport, setFileImport] = context.fileImport;
   const setGameState = context.gameState[1];
   const setTick = context.tick[1];

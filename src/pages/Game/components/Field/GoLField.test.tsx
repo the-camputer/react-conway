@@ -30,8 +30,10 @@ describe('GolField', () => {
           gameState: [[], jest.fn()],
           startingGameState: [[], jest.fn()],
           tick: [0, jest.fn()],
-          modalOpen: [false, jest.fn()],
+          importModalOpen: [false, jest.fn()],
           fileImport: [null, jest.fn()],
+          examplesModalOpen: [false, jest.fn()],
+          examples: {},
           toggleCell: jest.fn(),
         }}
       >

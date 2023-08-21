@@ -4,6 +4,7 @@ import GameOfLife from './pages/Game';
 import Home from './pages/Home';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import About from './pages/About/About';
+import { exampleLoader } from './pages/Game/Context/ExampleLoader';
 import { GoLProvider } from './pages/Game/Context/GameOfLifeContext';
 
 const App = () => {
@@ -14,11 +15,12 @@ const App = () => {
     },
     {
       path: '/game',
-      element: (
-        <GoLProvider>
-          <GameOfLife />
-        </GoLProvider>
-      ),
+      element: <GameOfLife />,
+    },
+    {
+      path: '/game/:example',
+      loader: exampleLoader,
+      element: <GameOfLife />,
     },
     {
       path: '/about',
@@ -32,7 +34,9 @@ function WrappedApp() {
   return (
     <div className='App'>
       <CssVarsProvider defaultMode='light'>
-        <App />
+        <GoLProvider>
+          <App />
+        </GoLProvider>
       </CssVarsProvider>
     </div>
   );

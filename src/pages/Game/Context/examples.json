@@ -93,5 +93,9 @@
       { "x": 28, "y": 2 },
       { "x": 29, "y": 2 }
     ]
+  },
+  "soup": {
+    "description": "A random configuration of living and dead cells",
+    "data": []
   }
 }
