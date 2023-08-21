@@ -10,6 +10,11 @@ enableFetchMocks();
 global.innerWidth = 1920;
 global.innerHeight = 640;
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLoaderData: jest.fn(),
+}));
+
 describe('GameOfLife', () => {
   beforeEach(() => {
     jest.useFakeTimers();

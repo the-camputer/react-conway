@@ -4,7 +4,6 @@ import { Cell } from '../GameOfLifeService';
 type exampleName = 'block' | 'glider' | 'blinker' | 'pulsar' | 'synthesis' | 'soup';
 
 export const exampleLoader = async ({ params }: { params: any}) => {
-    console.log(params);
     if (params.example) {
         if (params.example !== 'soup') {
             return examples[params.example as exampleName];

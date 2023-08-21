@@ -17,7 +17,11 @@ export const ExamplesModalButton: React.FC = () => {
   const [_, setExamplesModalOpen] = context.examplesModalOpen;
 
   return (
-    <IconButton variant='solid' onClick={() => setExamplesModalOpen(true)}>
+    <IconButton
+      variant='solid'
+      onClick={() => setExamplesModalOpen(true)}
+      data-testid='examples-link'
+    >
       <BookmarkOutlined />
     </IconButton>
   );
@@ -57,6 +61,7 @@ export const ExamplesModal: React.FC = () => {
               to={`/game/${exampleName}`}
               style={{ textDecoration: 'underlined' }}
               onClick={() => setExamplesModalOpen(false)}
+              data-testid={`${exampleName}-link`}
             >
               <Typography level='h5'>{exampleName}</Typography>
             </Link>
