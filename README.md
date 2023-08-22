@@ -1,8 +1,19 @@
-# Getting Started with Create React App
+# Conway's Game of Life
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Overview
+
+This project is a web application that runs [Conway's Game of Life](https://conwaylife.com/wiki/Conway%27s_Game_of_Life), with an intent of highlighting several facets of the React ecosystem:
+
+- Typescript
+- React Components
+- React Lifecycle Hooks
+- React Context
+- React Router
+- Jest Testing
+- Material UI
+- Styled Components
 
 In the project directory, you can run:
 
